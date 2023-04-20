@@ -1,0 +1,12 @@
+@import './base.css';
+body {
+  font-size: 2em;
+  min-height: 100vh;
+}
+
+.print{
+  width: 30%;
+  font-size: 15px;
+  background-color: pink;
+  border-radius: 5px;
+}
