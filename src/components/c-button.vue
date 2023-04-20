@@ -30,6 +30,7 @@ export default{
   background-color: var(--color-button);
   border-radius: 5px;
   cursor: pointer;
+  border: none;
   
 }
 .my-button:hover {

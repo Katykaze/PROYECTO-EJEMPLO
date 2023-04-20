@@ -45,6 +45,7 @@ export default {
   background-color: var(--color-background-input);
   color:var(--color-text-primary);
   text-align: center;
+  border-radius: 5px;
 }
 .c-input__input::placeholder{
   color: var(--color-text-primary);
