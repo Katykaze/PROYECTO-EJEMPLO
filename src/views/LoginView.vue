@@ -3,6 +3,7 @@
     <div class="principal-container">
       <!-- v-model="username" -->
       <p v-if="isSending">{{ publishedNamedPassword }}</p>
+      <p>{{ userLog }}</p>
       <CInput v-model:src="username" placeholder="Introduce tu nombre" />
       <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
       <!-- The key here is :onClick which is the equivalent to v-bind:onClick (shorthand) 
@@ -10,10 +11,9 @@
       <!-- NO SE SUELE COLOCAR CSS EN LINEA , LO MÁS COMÚN ES v-bind:class qu se resumen en :class -->
       <CButton
         :onClick="submitData"
-        :class="{ print: isPrinting }"
-        class="my-button"
         :isSending="isSending"
       ></CButton>
+      <!--  :class="{ print: !isPrinting }"  INCLUIR CUANDO SE HAYA ENVIADO -->
     </div>
   </main>
 </template>
@@ -32,7 +32,13 @@ export default {
       username: '',
       password: '',
       isPrinting: true,
-      isSending: false
+      isSending: false,
+      userLog:''
+    }
+  },
+  watch:{
+    username(value){
+      this.userLog= 'User : '+value;
     }
   },
   computed: {
@@ -44,23 +50,25 @@ export default {
     submitData() {
       console.log('llamando a la funcion submit()')
       console.log(this.username, this.password)
-      this.isSending = true
+      if(this.username !== '' && this.password !== ''){
+        this.isSending = true
+        setTimeout(() => {
+          this.isSending = false
+        }, 2000)
+      }else{
+        alert('por favor introduce credenciales')
+        this.isPrinting = false
+      }
     }
   }
 }
 </script>
 <style>
-.my-button {
-  font-size: 11px;
-  padding: 10px 20px;
-  width: 150px;
-}
 main {
-  width: 300px;
+  width:300px;
   height: 300px;
   display: grid;
   place-items: center;
-  border: 2px solid blueviolet;
   margin-left: 50px;
   margin-top: 50px;
 }
