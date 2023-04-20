@@ -1,8 +1,10 @@
 @import './base.css';
 body {
   font-size: 2em;
-  min-height: 100vh;
+  height: 100vh;
+  margin:0;
 }
+
 
 .print{
   width: 30%;

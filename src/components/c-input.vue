@@ -1,5 +1,6 @@
 <template>
   <input
+    class="c-input__input"
     :type="type"
     :placeholder="placeholder"
     :value="src"
@@ -20,7 +21,7 @@ export default {
   //   placeholder:String,
   //   src:String
   // }
-  name:"CInput",
+  name: 'CInput',
   props: {
     type: {
       type: String,
@@ -36,3 +37,21 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.c-input__input {
+  height: 3em;
+  min-width: 200px;
+  max-width: 400px;
+  background-color: var(--color-background-input);
+  color:var(--color-text-primary);
+  text-align: center;
+}
+.c-input__input::placeholder{
+  color: var(--color-text-primary);
+  font-size: 1.2em;
+  text-align: center;
+}
+.c-input__input:hover{
+  box-shadow: 0px 0px 4px 3px #00003d ;
+}
+</style>

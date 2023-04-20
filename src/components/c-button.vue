@@ -1,16 +1,14 @@
 <template>
-  <button class="my-button" v-bind="$attrs" @click="$emit('myClick')">{{ isSending ? 'Sending' : defaultString }}</button>
+  <button class="my-button" v-bind="$attrs" @click="$emit('myClick')"><slot></slot></button>
 </template>
+
+<!-- {{ isSending ? 'Sending' : defaultString }} -->
 
 <script>
 export default{
     name: 'CButton',
     inheritAttrs:false,
     props:{
-      defaultString:{
-        type:String,
-        default:'Send'
-      },
       isSending:{
         type:Boolean,
         default:false

@@ -18,8 +18,14 @@ export default defineComponent({
 //EN APP.VUE SE DEFINE EL LAYOUT
 </script>
 <style lang="scss">
-.app{
+#app{
+  height: 100%;
   background-image: var(--color-background-image);
+  background-size: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 </style>
 
