@@ -45,7 +45,7 @@ export default {
   },
   watch: {
     username(value) {
-      this.userLog = ' User : ' + value
+      this.userLog = value
     }
   },
   computed: {
@@ -64,8 +64,6 @@ export default {
       }
 
       const { username, password } = this.validCredentials
-
-      // const validUsername = this.validCredentials.username;
 
       if (this.username !== username || this.password !== password) {
         return (this.errorMessage = 'Credenciales incorrectas')
@@ -89,7 +87,7 @@ export default {
   text-align: center;
   color: var(--color-text-primary);
 }
-span[class*="v-login"]{
+span[class*='v-login'] {
   margin-top: 200px;
 }
 // media query
