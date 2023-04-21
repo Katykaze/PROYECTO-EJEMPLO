@@ -7,8 +7,9 @@ body {
 
 
 .print{
-  width: 30%;
+  width: 150%;
   font-size: 15px;
   background-color: pink;
   border-radius: 5px;
+  color:blue
 }

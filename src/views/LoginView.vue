@@ -12,7 +12,7 @@
     <!-- <span class="v-login__error">Error in your credentials</span>  -->
    
     <template #button>
-      <CButton :onClick="submitData" :isSending="isSending">{{
+      <CButton :onClick="submitData" :isSending="isSending" :class="{'print':isSending}">{{
         isSending ? 'Sending' : 'Send'
       }}</CButton>
     </template>

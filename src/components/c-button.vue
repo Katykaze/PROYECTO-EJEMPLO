@@ -1,5 +1,5 @@
 <template>
-  <button class="my-button" v-bind="$attrs" @click="$emit('myClick')"><slot></slot></button>
+  <button class="my-button"  v-bind="$attrs" @click="$emit('myClick')"><slot></slot></button>
 </template>
 
 <!-- {{ isSending ? 'Sending' : defaultString }} -->
