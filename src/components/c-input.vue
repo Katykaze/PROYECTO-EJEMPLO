@@ -46,6 +46,7 @@ export default {
   color:var(--color-text-primary);
   text-align: center;
   border-radius: 5px;
+  transition: all 0.2s;
 }
 .c-input__input::placeholder{
   color: var(--color-text-primary);

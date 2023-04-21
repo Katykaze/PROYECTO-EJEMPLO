@@ -12,7 +12,7 @@
     <!-- <span class="v-login__error">Error in your credentials</span>  -->
    
     <template #button>
-      <CButton :onClick="submitData" :isSending="isSending" :class="{'print':isSending}">{{
+      <CButton :onClick="submitData" :isSending="isSending">{{
         isSending ? 'Sending' : 'Send'
       }}</CButton>
     </template>
@@ -34,7 +34,6 @@ export default {
     return {
       username: '',
       password: '',
-      isPrinting: true,
       isSending: false,
       userLog: '',
       validCredentials: {
@@ -58,14 +57,12 @@ export default {
     submitData() {
       console.log('llamando a la funcion submit()')
       console.log(this.username, this.password)
-      if (this.username === '' || this.username === '') {
-        this.isPrinting = false
+      if (this.username === '' || this.password === '') {
         alert('por favor introduce credenciales')
       } else if (
         this.username !== this.validCredentials.username ||
         this.password !== this.validCredentials.password
       ) {
-        this.isPrinting = false
         alert('credenciales incorrectas')
       } else {
         this.isSending = true
@@ -85,13 +82,36 @@ export default {
   text-align: center;
   color: var(--color-text-primary);
 }
+// media query
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+ 
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  // .v-login__info {
+  //   border: 2px solid red;
+  //   background-color: yellow;
+  // }
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  
+}
 </style>
 <!-- metemos expresion ternaria porque con v-if no conseguía -->
 <!-- <slot>
           {{ disabled ? 'Cargando' : 'Login' }}
         </slot> -->
-// data() { // return { // username: '', // password: '', // validCredentials: { // username:
-'katherine', // password: 'zambrano' // } // } // }, // methods: { // submitData() { // if ( //
-this.username === this.validCredentials.username && // this.password ===
-this.validCredentials.password // ) { // alert('Usuario Correcto') // } else { // alert('Usuario
-Incorrecto') // } // } // }
