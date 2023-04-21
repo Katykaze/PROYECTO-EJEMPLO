@@ -1,14 +1,21 @@
 <template>
   <div class="v-login__info">
-    <p v-if="isSending">{{ publishedNamedPassword }}</p>
-    <p class="">{{ userLog }}</p>
+    <span v-if="isSending">{{ publishedNamedPassword }}</span>
+    <span class="" v-if="correctUser">{{ userLog }}</span>
   </div>
   <l-forms>
     <template #form>
       <CInput v-model:src="username" placeholder="Introduce tu nombre" />
       <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
     </template>
-    <template #button> <CButton :onClick="submitData" :isSending="isSending">{{ isSending ? 'Sending' : 'Send' }}</CButton> </template>
+  
+    <!-- <span class="v-login__error">Error in your credentials</span>  -->
+   
+    <template #button>
+      <CButton :onClick="submitData" :isSending="isSending">{{
+        isSending ? 'Sending' : 'Send'
+      }}</CButton>
+    </template>
   </l-forms>
 </template>
 <script>
@@ -29,7 +36,12 @@ export default {
       password: '',
       isPrinting: true,
       isSending: false,
-      userLog: ''
+      userLog: '',
+      validCredentials: {
+        username: 'katherine',
+        password: 'zambrano'
+      },
+      correctUser: false
     }
   },
   watch: {
@@ -46,14 +58,21 @@ export default {
     submitData() {
       console.log('llamando a la funcion submit()')
       console.log(this.username, this.password)
-      if (this.username !== '' && this.password !== '') {
+      if (this.username === '' || this.username === '') {
+        this.isPrinting = false
+        alert('por favor introduce credenciales')
+      } else if (
+        this.username !== this.validCredentials.username ||
+        this.password !== this.validCredentials.password
+      ) {
+        this.isPrinting = false
+        alert('credenciales incorrectas')
+      } else {
         this.isSending = true
+        this.correctUser = true
         setTimeout(() => {
           this.isSending = false
         }, 2000)
-      } else {
-        alert('por favor introduce credenciales')
-        this.isPrinting = false
       }
     }
   }
