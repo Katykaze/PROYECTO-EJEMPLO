@@ -55,22 +55,43 @@ export default {
   },
   methods: {
     submitData() {
-      console.log('llamando a la funcion submit()')
-      console.log(this.username, this.password)
-      if (this.username === '' || this.password === '') {
-        alert('por favor introduce credenciales')
-      } else if (
-        this.username !== this.validCredentials.username ||
-        this.password !== this.validCredentials.password
-      ) {
-        alert('credenciales incorrectas')
-      } else {
-        this.isSending = true
-        this.correctUser = true
-        setTimeout(() => {
-          this.isSending = false
-        }, 2000)
+
+      if(this.username === '' || this.password === ''){
+        return alert('Porfavor introduce credenciales');
       }
+
+      const { username , password } = this.validCredentials;
+
+      // const validUsername = this.validCredentials.username;
+
+      if(this.username !== username || this.password !== password ) {
+        return alert('Credenciales incorrectas');
+      }
+
+      this.isSending = true;
+      this.correctUser = true;
+
+      setTimeout(() => {
+          this.isSending = false
+      }, 2000)
+
+
+      // console.log('llamando a la funcion submit()')
+      // console.log(this.username, this.password)
+      // if (this.username === '' || this.password === '') {
+      //   alert('por favor introduce credenciales')
+      // } else if (
+      //   this.username !== this.validCredentials.username ||
+      //   this.password !== this.validCredentials.password
+      // ) {
+      //   alert('credenciales incorrectas')
+      // } else {
+      //   this.isSending = true
+      //   this.correctUser = true
+      //   setTimeout(() => {
+      //     this.isSending = false
+      //   }, 2000)
+      // }
     }
   }
 }
