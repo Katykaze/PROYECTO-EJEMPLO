@@ -1,8 +1,8 @@
 <!--EN APP.VUE SE CREA LA INSTANCIA PRINCIPAL DE VUE-->
 <template>
- <div class="app">
+ 
     <LoginView/>
- </div>
+ 
 </template>
 <script>
 //import { createApp } from 'vue'
@@ -23,9 +23,12 @@ export default defineComponent({
   background-image: var(--color-background-image);
   background-size: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  text-align: center;
+  display:grid;
+  grid-template-columns:  1fr;
+  // display: flex;
+  // justify-content: center;
+  // text-align: center;
+  // flex-direction: row;
 }
 </style>
 

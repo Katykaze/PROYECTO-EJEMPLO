@@ -1,16 +1,15 @@
 <template>
   <div class="v-login__info">
-    <span v-if="isSending">{{ publishedNamedPassword }}</span>
-    <span class="" v-if="correctUser">{{ userLog }}</span>
+    <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
+    <span class="v-login__user" v-if="correctUser">{{ userLog }}</span>
+    <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
   </div>
   <l-forms>
     <template #form>
       <CInput v-model:src="username" placeholder="Introduce tu nombre" />
       <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
     </template>
-  
-    <!-- <span class="v-login__error">Error in your credentials</span>  -->
-   
+
     <template #button>
       <CButton :onClick="submitData" :isSending="isSending">{{
         isSending ? 'Sending' : 'Send'
@@ -40,99 +39,77 @@ export default {
         username: 'katherine',
         password: 'zambrano'
       },
-      correctUser: false
+      correctUser: false,
+      errorMessage: ''
     }
   },
   watch: {
     username(value) {
-      this.userLog = 'User : ' + value
+      this.userLog = ' User : ' + value
     }
   },
   computed: {
     publishedNamedPassword() {
       return `Welcome ${this.username} Tu contraseña es ${this.password}`
+    },
+    showErrorMessage() {
+      //me devuelve true si NO está vacío
+      return this.errorMessage !== ''
     }
   },
   methods: {
     submitData() {
-
-      if(this.username === '' || this.password === ''){
-        return alert('Porfavor introduce credenciales');
+      if (this.username === '' || this.password === '') {
+        return (this.errorMessage = 'Porfavor introduce credenciales')
       }
 
-      const { username , password } = this.validCredentials;
+      const { username, password } = this.validCredentials
 
       // const validUsername = this.validCredentials.username;
 
-      if(this.username !== username || this.password !== password ) {
-        return alert('Credenciales incorrectas');
+      if (this.username !== username || this.password !== password) {
+        return (this.errorMessage = 'Credenciales incorrectas')
       }
 
-      this.isSending = true;
-      this.correctUser = true;
+      this.errorMessage = ''
+      this.isSending = true
+      this.correctUser = true
 
       setTimeout(() => {
-          this.isSending = false
+        this.isSending = false
       }, 2000)
-
-
-      // console.log('llamando a la funcion submit()')
-      // console.log(this.username, this.password)
-      // if (this.username === '' || this.password === '') {
-      //   alert('por favor introduce credenciales')
-      // } else if (
-      //   this.username !== this.validCredentials.username ||
-      //   this.password !== this.validCredentials.password
-      // ) {
-      //   alert('credenciales incorrectas')
-      // } else {
-      //   this.isSending = true
-      //   this.correctUser = true
-      //   setTimeout(() => {
-      //     this.isSending = false
-      //   }, 2000)
-      // }
     }
   }
 }
 </script>
 <style lang="scss">
 .v-login__info {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
   text-align: center;
   color: var(--color-text-primary);
+}
+span[class*="v-login"]{
+  margin-top: 200px;
 }
 // media query
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
- 
-} 
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  // .v-login__info {
-  //   border: 2px solid red;
-  //   background-color: yellow;
-  // }
-} 
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  
 }
 </style>
-<!-- metemos expresion ternaria porque con v-if no conseguía -->
-<!-- <slot>
-          {{ disabled ? 'Cargando' : 'Login' }}
-        </slot> -->
