@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,800&display=swap');
+//efecto de transparencia en el linea-gradient con el ultmo color y el cien por cien
 :root{
-    --color-background-image: linear-gradient(#11001C, #290025);
-    --color-button:#65015B;
+    --color-background-image: linear-gradient(to top, #120012 0%, #3F004F 50%, #7F005F 100%, rgba(127,0,95,0.5) 100%);
+    --color-button:#7F005F ;
     --color-background-input:#35012C;
     --color-text-primary:#E1AEFE;
     --color-text-secondary:#141313;
