@@ -82,7 +82,7 @@ export default {
       if(this.isSending && this.correctUser){
         this.$router.push({name:'home'});
       }
-      this.$r
+    
     }
   }
 }
