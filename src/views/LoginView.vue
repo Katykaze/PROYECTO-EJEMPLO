@@ -76,6 +76,12 @@ export default {
       setTimeout(() => {
         this.isSending = false
       }, 2000)
+      this.$router.push({name:'home'});
+    },
+    goToMain(){
+      if(this.isSending && this.correctUser){
+        this.$router.push({name:'home'});
+      }
     }
   }
 }

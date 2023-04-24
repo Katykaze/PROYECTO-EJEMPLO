@@ -35,7 +35,8 @@ export default{
 }
 .my-button:hover {
   color: rgba(255, 255, 255, 1) ;
-  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+  box-shadow: 0 5px 10px rgba(58, 1, 92);
+  
   transition: all 0.2s;
 }
 </style>

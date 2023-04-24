@@ -34,7 +34,7 @@ export default {
   background-color: var(--color-background-input);
   color:var(--color-text-primary);
   text-align: center;
-  border-radius: 5px;
+  border:0;
   transition: all 0.2s;
 }
 .c-input__input::placeholder{
@@ -43,6 +43,9 @@ export default {
   text-align: center;
 }
 .c-input__input:hover{
-  box-shadow: 0px 0px 4px 3px #00003d ;
+  box-shadow: 0px 0px 4px 3px #3A015C;
+}
+.c-input__input:focus{
+  outline: none;
 }
 </style>
