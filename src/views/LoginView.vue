@@ -81,8 +81,7 @@ export default {
     goToMain(){
       if(this.isSending && this.correctUser){
         this.$router.push({name:'home'});
-      }
-    
+      }  
     }
   }
 }
