@@ -6,8 +6,9 @@
 //import { createApp } from 'vue'
 //import router from './router'
 import { defineComponent } from 'vue'
-
+import './styles/main.css'
 import './styles/pstyle.scss'
+
 
 export default defineComponent({
   // components: { LoginView }

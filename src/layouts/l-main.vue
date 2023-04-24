@@ -4,12 +4,12 @@
       <slot name="header"></slot>
     </div>
     <div class="l-main__content">
-      <div class="l-main__content--container">
-        <slot></slot>
+      <div class="l-main__content--wrapper">
+        <slot name="main"></slot>
       </div>
     </div>
     <footer class="l-main__footer">
-      <slot name="icons"></slot>
+      <slot name="footer"></slot>
     </footer>
   </section>
 </template>
@@ -20,8 +20,11 @@ export default {
 }
 </script>
 <style lang="scss">
-.l-main{
-    width: 100%;
-    background-color: var(--color-background-image);
+.l-main {
+  background-color: var(--color-background-image);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>

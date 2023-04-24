@@ -33,6 +33,7 @@ export default {
   max-width: 400px;
   background-color: var(--color-background-input);
   color:var(--color-text-primary);
+  font-family: var(--font-family-primary);
   text-align: center;
   border:0;
   transition: all 0.2s;
@@ -43,7 +44,7 @@ export default {
   text-align: center;
 }
 .c-input__input:hover{
-  box-shadow: 0px 0px 4px 3px #3A015C;
+  box-shadow: 0px 0px 4px 3px #FFB703;
 }
 .c-input__input:focus{
   outline: none;

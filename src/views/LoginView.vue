@@ -21,6 +21,7 @@
 import LForms from '../layouts/l-forms.vue'
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
+import { userStore } from '../stores/user'
 
 export default {
   name: 'Login',
@@ -35,10 +36,6 @@ export default {
       password: '',
       isSending: false,
       userLog: '',
-      validCredentials: {
-        username: 'katherine',
-        password: 'zambrano'
-      },
       correctUser: false,
       errorMessage: ''
     }
@@ -58,30 +55,26 @@ export default {
     }
   },
   methods: {
-    submitData() {
+    async submitData() {
+      const useUserStore = userStore()
+      const isLogged = await useUserStore.login({
+        username: this.username,
+        password: this.password
+      })
+
       if (this.username === '' || this.password === '') {
         return (this.errorMessage = 'Porfavor introduce credenciales')
       }
 
-      const { username, password } = this.validCredentials
-
-      if (this.username !== username || this.password !== password) {
+      if (!isLogged) {
         return (this.errorMessage = 'Credenciales incorrectas')
       }
 
       this.errorMessage = ''
       this.isSending = true
       this.correctUser = true
-
-      setTimeout(() => {
-        this.isSending = false
-      }, 2000)
-      this.$router.push({name:'home'});
-    },
-    goToMain(){
-      if(this.isSending && this.correctUser){
-        this.$router.push({name:'home'});
-      }  
+      this.$router.push({ name: 'home' })
+      // const { username, password } = this.validCredentials
     }
   }
 }
@@ -95,7 +88,9 @@ export default {
 }
 span[class*='v-login'] {
   margin-top: 200px;
+  white-space: pre-line;
 }
+
 // media query
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

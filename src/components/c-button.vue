@@ -24,19 +24,19 @@ export default{
 <style lang="scss">
 .my-button {
   font-size: 11px;
-  color: antiquewhite;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
   padding: 10px 20px;
   width: 150px;
   background-color: var(--color-button);
   border-radius: 5px;
   cursor: pointer;
   border: none;
+  transition: 0.4s;
   
 }
 .my-button:hover {
-  color: rgba(255, 255, 255, 1) ;
-  box-shadow: 0 5px 10px rgba(58, 1, 92);
-  
-  transition: all 0.2s;
+  color: var(--color-text-secondary);
+  background-color: #FFB703;
 }
 </style>
