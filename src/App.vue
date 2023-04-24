@@ -1,12 +1,10 @@
 <!--EN APP.VUE SE CREA LA INSTANCIA PRINCIPAL DE VUE-->
 <template>
   <router-view />
-  <!-- <LoginView /> -->
 </template>
 <script>
 //import { createApp } from 'vue'
 //import router from './router'
-import LoginView from './views/LoginView.vue'
 import { defineComponent } from 'vue'
 
 import './styles/pstyle.scss'
