@@ -22,12 +22,14 @@
       justify-content: center;
       gap: 20px;
       margin-bottom: 200px;
+      min-width: 400px;
       /* height: 100%; */
     }
     .l-forms__form{
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 30px;
+      /* background-color: #8ECAE6; */
     }
     .l-forms__button{
       display: flex;
