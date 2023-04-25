@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       climbers: [],
-      fetched:false,
+      isPending:true,
       error:false
     }
   },
@@ -47,7 +47,7 @@ export default {
       try{
         const useClimberStore = climbersStore();
         this.climbers = await useClimberStore.fetchClimbers();    
-        this.fetched=true;
+        this.isPending=false;
          
       }catch(e){
         console.log(e)
