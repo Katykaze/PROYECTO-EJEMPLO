@@ -56,15 +56,14 @@ export default {
   },
   methods: {
     async submitData() {
+      if (this.username === '' || this.password === '') {
+        return (this.errorMessage = 'Porfavor introduce credenciales')
+      }
       const useUserStore = userStore()
       const isLogged = await useUserStore.login({
         username: this.username,
         password: this.password
       })
-
-      if (this.username === '' || this.password === '') {
-        return (this.errorMessage = 'Porfavor introduce credenciales')
-      }
 
       if (!isLogged) {
         return (this.errorMessage = 'Credenciales incorrectas')
