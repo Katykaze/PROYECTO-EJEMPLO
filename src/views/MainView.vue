@@ -1,44 +1,72 @@
 <template>
-  <LMain>
+  <l-main>
     <template #header>
-      <h1>NEW VIEW 🏡🏠</h1>
+      <div class="l-main__header--tittle">Top Climbers</div>
     </template>
-    <template #main>
-      <p>HELLOW WOLRD 🌎</p>
-      <p>This is a new view</p>
+    <template   #main>
+      
+      <CClimber v-for="climber in climbers" :key="climber.name" :src="climber"/>
+      <h2 v-if="error">error </h2>
       <CButton :onclick="doLogout">Log Out</CButton>
     </template>
     <template #footer>
       <p>📲 social Media</p>
     </template>
-  </LMain>
+  </l-main>
 </template>
+
 <script>
 import LMain from '../layouts/l-main.vue'
+import CClimber from '../components/c-climber.vue'
 import CButton from '../components/c-button.vue'
 import { userStore } from '../stores/user'
+import { climbersStore } from '../stores/climbers'
 
 export default {
   name: 'MainView',
-  data() {
-    return {
-      isSending: false
-      //   isPending: true
-    }
-  },
   components: {
     LMain,
-    CButton
+    CButton,
+    CClimber
+  },
+  data() {
+    return {
+      climbers: [],
+      fetched:false,
+      error:false
+    }
   },
   methods: {
     doLogout() {
-      this.isSending = true
+      
       const useUserStore = userStore()
       useUserStore.logout()
       this.$router.push({ name: 'login' })
-    }
+    },
+    async getAllClimbers() {
+      try{
+        const useClimberStore = climbersStore();
+        this.climbers = await useClimberStore.fetchClimbers();    
+        this.fetched=true;
+         
+      }catch(e){
+        console.log(e)
+        this.error=true;
+      }
+      
+    },
+  },
+  created(){
+    this.getAllClimbers();
   }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.l-main__header--tittle {
+  margin-top: 50px;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+</style>

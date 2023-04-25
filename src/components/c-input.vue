@@ -37,6 +37,8 @@ export default {
   text-align: center;
   border:0;
   transition: all 0.2s;
+  border-radius: 6px;
+  padding: 5px;
 }
 .c-input__input::placeholder{
   color: var(--color-text-primary);

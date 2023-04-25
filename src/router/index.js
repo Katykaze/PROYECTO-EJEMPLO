@@ -15,8 +15,8 @@ const router = createRouter({
       component: () => import('../views/MainView.vue')
     },
     {
-      path: '',
-      name: 'unkwnow',
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
       component: () => import('../views/LoginView.vue')
     }
     

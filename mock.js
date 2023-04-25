@@ -4,7 +4,7 @@ const app = express()
 const port = 8081
 
 app.listen(port, () => {
-   console.log(`Example app listening on por ${port}`)
+  console.log(`Example app listening on por ${port}`)
 })
 
 app.use(corss())
@@ -12,73 +12,107 @@ app.use(express.json())
 
 // Middleware to intercept the response body, adding to locals so we can log later.
 app.use((req, res, next) => {
-   const oldJson = res.json
-   res.json = (body) => {
-      res.locals.body = body
-      return oldJson.call(res, body)
-   }
-   next()
+  const oldJson = res.json
+  res.json = (body) => {
+    res.locals.body = body
+    return oldJson.call(res, body)
+  }
+  next()
 })
 
 // Middleware to log in console the request and body response.
 app.use(function (req, res, next) {
-   if (req.url !== '/') {
-      res?.on('finish', () => {
-         const response = res.locals.body
-         const details = {
-            method: req?.method,
-            url: req?.path,
-            status: res.statusCode,
-            code: res.statusMessage,
-            body: response || {}
-         }
-         console.log(details)
-      })
-   }
-   next()
+  if (req.url !== '/') {
+    res?.on('finish', () => {
+      const response = res.locals.body
+      const details = {
+        method: req?.method,
+        url: req?.path,
+        status: res.statusCode,
+        code: res.statusMessage,
+        body: response || {}
+      }
+      console.log(details)
+    })
+  }
+  next()
 })
 
 app.post('/user/login', (req, res) => {
-   const user = req.body
-   if (user.username === 'katherine' && user.password === 'zambrano') {
-      res.send(true)
-   } else {
-      res.status(404).send({ data: 'User not found!' })
-   }
+  const user = req.body
+  if (user.username === 'katherine' && user.password === 'zambrano') {
+    res.send(true)
+  } else {
+    res.status(404).send({ data: 'User not found!' })
+  }
 })
 
-app.get('/products/getAll', (req, res) => {
-   const response = [
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      },
-      {
-         balance: '',
-         type: 'Tarjeta de débito',
-         number: '**** **** **** **** 9959'
-      },
-      {
-         balance: '',
-         type: 'Tarjeta de débito',
-         number: '**** **** **** **** 9959'
-      },
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      },
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      },
-      {
-         balance: '7.839',
-         type: 'Cuenta',
-         number: '**** **** **** **** **** 6993'
-      }
-   ]
-   res.send(response)
+app.get('/climbers/getAll', (req, res) => {
+  const response = [
+    {
+      img: 'https://woguclimbing.com/wp-content/uploads/2017/06/alex-honnold-freerider-Jimmy-Chin-1024x539.jpg',
+      name: 'Alex Honnold',
+      age: '36',
+      nationality: 'Estados Unidos',
+      achievements: [
+        'Primer ascenso en solitario y sin cuerda de El Capitán en Yosemite',
+
+        'Ganador de múltiples premios de escalada',
+
+        "Autor del libro 'Alone on the Wall'"
+      ]
+    },
+    {
+      img: 'https://www.deaventura.pe/blog/wp-content/uploads/2014/11/Lynn-en-Nose.jpg',
+      name: 'Lynn Hill',
+      age: '60',
+      nationality: 'Estados Unidos',
+      achievements: [
+         "Primera persona en escalar la vía 'The Nose' de El Capitán en Yosemite en libre", 
+
+         "Ganadora de múltiples campeonatos mundiales de escalada", 
+ 
+         "Autora del libro 'Climbing Free'" 
+      ]
+    },
+    {
+      img: 'https://phantom-elmundo.unidadeditorial.es/db5769edebf93b0cdfb9feb050e3a7e2/crop/0x497/1146x1258/resize/746/f/jpg/assets/multimedia/imagenes/2020/07/29/15960458319949.jpg',
+      name: 'Chris Sharma',
+      age: '40',
+      nationality: 'Estados Unidos',
+      achievements: [
+         "Primer ascenso de la vía 'Biographie' en Céüse, Francia", 
+
+        "Ganador de múltiples competencias de escalada deportiva", 
+
+        "Creador de la serie de videos de escalada 'Progression'"  
+      ]
+    },
+    {
+      img: 'https://www.lacrux.com/wp-content/uploads/2018/04/Warum-Adam-Ondra-Silence-mit-9c-bewertete-1024x444.jpg',
+      name: 'Adam Ondra',
+      age: '30',
+      nationality: 'República Checa',
+      achievements: [
+         "Primer ascenso de la vía 'Silence' en Flatanger Cave, Noruega", 
+
+        "Ganador de múltiples campeonatos mundiales de escalada", 
+
+        "Primer escalador en encadenar una vía de grado 5.15c"   
+      ]
+    },
+    {
+      img: 'https://woguclimbing.com/wp-content/uploads/2019/08/Janja-Garnbret-web-1024x795.jpg',
+      name: 'Janja Garnbret',
+      age: '22',
+      nationality: 'Eslovenia',
+      achievements: [
+        "Ganadora de múltiples campeonatos mundiales de escalada en dificultad y combinada",
+        "Medallista de oro en los Juegos Olímpicos de Tokio 2020 en la modalidad de escalada combinada",
+        "Primera mujer en encadenar una vía de grado 5.15b"
+      ]
+    }
+    
+  ]
+  res.send(response)
 })

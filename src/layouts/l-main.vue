@@ -25,6 +25,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+}
+.l-main__content {
+  flex-grow: 1;
+}
+.l-main__header,
+.l-main__footer {
+  flex-shrink: 0;
 }
 </style>

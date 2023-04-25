@@ -22,6 +22,7 @@ import LForms from '../layouts/l-forms.vue'
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
 import { userStore } from '../stores/user'
+//porque en ese archivo pone export const en lugar de export default
 
 export default {
   name: 'Login',
@@ -56,14 +57,14 @@ export default {
   },
   methods: {
     async submitData() {
-      if (this.username === '' || this.password === '') {
+      //hacer desestructuración de objetosd y luego borrar this., s no dentro de login({username: this.username,password: this.password})
+
+      const { username, password } = this
+      if (username === '' || password === '') {
         return (this.errorMessage = 'Porfavor introduce credenciales')
       }
       const useUserStore = userStore()
-      const isLogged = await useUserStore.login({
-        username: this.username,
-        password: this.password
-      })
+      const isLogged = await useUserStore.login({ username, password })
 
       if (!isLogged) {
         return (this.errorMessage = 'Credenciales incorrectas')
@@ -72,8 +73,15 @@ export default {
       this.errorMessage = ''
       this.isSending = true
       this.correctUser = true
+
+      await this.wait(2000)
+
       this.$router.push({ name: 'home' })
-      // const { username, password } = this.validCredentials
+    },
+    async wait(ms){
+        return new Promise((resolve,reject)=>{
+          setTimeout(resolve,ms)
+        })
     }
   }
 }
