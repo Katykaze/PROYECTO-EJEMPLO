@@ -38,4 +38,7 @@ export default {
 .l-main__footer {
   flex-shrink: 0;
 }
+.l-main__content--wrapper{
+  overflow:auto;
+}
 </style>

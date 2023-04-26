@@ -3,10 +3,14 @@
     <template #header>
       <div class="l-main__header--tittle">Top Climbers</div>
     </template>
-    <template   #main>
-      
-      <CClimber v-for="climber in climbers" :key="climber.name" :src="climber"/>
-      <h2 v-if="error">error </h2>
+    <template #main>
+      <CClimber
+        v-for="climber in climbers"
+        :key="climber.name"
+        :src="climber"
+        :achievements="climber.achievements"
+      />
+      <h2 v-if="error">error</h2>
       <CButton :onclick="doLogout">Log Out</CButton>
     </template>
     <template #footer>
@@ -32,32 +36,29 @@ export default {
   data() {
     return {
       climbers: [],
-      isPending:true,
-      error:false
+      isPending: true,
+      error: false
     }
   },
   methods: {
     doLogout() {
-      
       const useUserStore = userStore()
       useUserStore.logout()
       this.$router.push({ name: 'login' })
     },
     async getAllClimbers() {
-      try{
-        const useClimberStore = climbersStore();
-        this.climbers = await useClimberStore.fetchClimbers();    
-        this.isPending=false;
-         
-      }catch(e){
+      try {
+        const useClimberStore = climbersStore()
+        this.climbers = await useClimberStore.fetchClimbers()
+        this.isPending = false
+      } catch (e) {
         console.log(e)
-        this.error=true;
+        this.error = true
       }
-      
-    },
+    }
   },
-  created(){
-    this.getAllClimbers();
+  created() {
+    this.getAllClimbers()
   }
 }
 </script>
