@@ -27,9 +27,9 @@ export default {
   align-items: center;
   justify-content: space-between;
   display: flex;
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  max-width: 100%;
+  overflow: auto;
 }
 .l-main__content {
   flex-grow: 1;
@@ -38,7 +38,10 @@ export default {
 .l-main__footer {
   flex-shrink: 0;
 }
-.l-main__content--wrapper{
-  overflow:auto;
+.l-main__content--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  overflow: auto;
 }
 </style>

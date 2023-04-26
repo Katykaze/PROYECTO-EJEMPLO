@@ -1,19 +1,26 @@
 <template>
-  <div class="c-climber">
-    <div class="c-climber__img">
-      <img :src="src.img" alt="foto de escalador" />
-    </div>
-    <div class="c-climber__info">
-      <span class="c-climber__info--name">{{ src.name }}</span>
-      <span class="c-climber__info--age">{{ src.age }}</span>
-      <span class="c-climber__info--nationality">{{ src.nationality }}</span>
-      <!-- <span class="c-climber__info--achievements">{{ src.achievements }}</span> -->
-      <div class="c-climber_info--titleAch">Logros</div>
-      <ul class="c-climber_info--logros" v-for="(achievement,index) in achievements" :key="index">
-        <li>{{ achievement }}</li>
-      </ul>
-    </div>
-  </div>
+  <main class="c-climber">
+    <article class="c-climber__wrapper">
+      <section class="c-climber__img">
+        <img :src="src.img" alt="foto de escalador" />
+      </section>
+      <section class="c-climber__info">
+        <p class="c-climber__info--name">{{ src.name }}</p>
+        <p class="c-climber__info--age">{{ src.age }}</p>
+        <p class="c-climber__info--nationality">{{ src.nationality }}</p>
+        <div class="c-climber_info--titleAch">
+          <strong>Logros:</strong>
+        </div>
+        <ul
+          class="c-climber_info--logros"
+          v-for="(achievement, index) in achievements"
+          :key="index"
+        >
+          <li>{{ achievement }}</li>
+        </ul>
+      </section>
+    </article>
+  </main>
 </template>
 
 <script>
@@ -24,7 +31,7 @@ export default {
       type: Object,
       required: true
     },
-    achievements:{
+    achievements: {
       type: Array,
       required: true
     }
@@ -33,12 +40,34 @@ export default {
 </script>
 
 <style lang="scss">
-.c-climber {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.c-climber__wrapper {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
 }
 
-span[class*='c-climber__info'] {
-  display: block;
+.c-climber__img {
+  width: 500px;
+  height: 400px;
+  flex: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.c-climber__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 2;
+}
+
+.c-climber_info--titleAch {
+  margin-top: 20px;
+  font-size: 36px;
+  font-weight: bold;
 }
 </style>
