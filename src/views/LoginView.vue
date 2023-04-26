@@ -1,7 +1,7 @@
 <template>
   <div class="v-login__info">
     <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
-    <span class="v-login__user" v-if="correctUser">{{ userLog }}</span>
+    <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
     <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
   </div>
   <l-forms>

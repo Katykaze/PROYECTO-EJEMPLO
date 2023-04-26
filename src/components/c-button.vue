@@ -37,6 +37,6 @@ export default{
 }
 .my-button:hover {
   color: var(--color-text-secondary);
-  background-color: #FFB703;
+  background-color: var(--color-secondary);
 }
 </style>

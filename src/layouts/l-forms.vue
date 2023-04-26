@@ -29,7 +29,7 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
-      /* background-color: #8ECAE6; */
+      
     }
     .l-forms__button{
       display: flex;

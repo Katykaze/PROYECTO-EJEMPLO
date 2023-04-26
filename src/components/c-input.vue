@@ -46,7 +46,7 @@ export default {
   text-align: center;
 }
 .c-input__input:hover{
-  box-shadow: 0px 0px 4px 3px #FFB703;
+  box-shadow: 0px 0px 4px 3px var(--color-secondary);
 }
 .c-input__input:focus{
   outline: none;

@@ -18,6 +18,11 @@
         >
           <li>{{ achievement }}</li>
         </ul>
+        <div class="c-climber_info--container">
+          <a class="c-climber_info--container--link" v-if="src.link.length !== 0" v-bind:href="src.link"
+            target="_blank">Más Información</a
+          >
+        </div>
       </section>
     </article>
   </main>
@@ -40,10 +45,15 @@ export default {
 </script>
 
 <style lang="scss">
+
 .c-climber__wrapper {
   display: flex;
   gap: 60px;
   justify-content: space-between;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  
+}
 }
 
 .c-climber__img {
@@ -56,6 +66,9 @@ export default {
     height: 100%;
     object-fit: cover;
   }
+  @media only screen and (max-width: 600px) {
+    margin-left: 8%;
+  }
 }
 
 .c-climber__info {
@@ -63,11 +76,48 @@ export default {
   flex-direction: column;
   gap: 20px;
   flex: 2;
+  @media screen and (max-width: 600px) {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+  }
+}
+.c-climber__info:hover {
+  border: var(--color-secondary);
+  background-color: var(--color-light-secondary);
+  opacity: 0.38;
+  transition: background 0.3s, opacity 0.3s;
+  color: var(--color-text-secondary);
+  cursor: pointer;
 }
 
 .c-climber_info--titleAch {
   margin-top: 20px;
   font-size: 36px;
   font-weight: bold;
+}
+
+.c-climber_info--container {
+  margin-top: 5px;
+  font-weight: bold;
+  width: 30%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+}
+.c-climber_info--container:hover {
+  background-color: var(--color-button);
+ 
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 4px 3px var(--color-secondary);
+  a{
+    color: var(--color-secondary);
+  }
+  
 }
 </style>

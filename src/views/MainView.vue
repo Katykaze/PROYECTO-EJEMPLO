@@ -4,13 +4,13 @@
       <div class="l-main__header--tittle">Top Climbers</div>
     </template>
     <template #main>
+      <h2 v-if="error">error</h2>
       <CClimber
         v-for="climber in climbers"
         :key="climber.name"
         :src="climber"
         :achievements="climber.achievements"
       />
-      <h2 v-if="error">error</h2>
       <CButton :onclick="doLogout">Log Out</CButton>
     </template>
     <template #footer>
@@ -70,4 +70,10 @@ export default {
   font-weight: 700;
   margin-bottom: 50px;
 }
+.my-button{
+  display: flex;
+  justify-content: center;
+  
+}
+
 </style>

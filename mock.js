@@ -60,7 +60,8 @@ app.get('/climbers/getAll', (req, res) => {
         'Ganador de múltiples premios de escalada',
 
         "Autor del libro 'Alone on the Wall'"
-      ]
+      ],
+      link: 'http://www.alexhonnold.com/'
     },
     {
       img: 'https://www.deaventura.pe/blog/wp-content/uploads/2014/11/Lynn-en-Nose.jpg',
@@ -73,7 +74,8 @@ app.get('/climbers/getAll', (req, res) => {
          "Ganadora de múltiples campeonatos mundiales de escalada", 
  
          "Autora del libro 'Climbing Free'" 
-      ]
+      ],
+      link:'https://lynnhillclimbing.com/'
     },
     {
       img: 'https://phantom-elmundo.unidadeditorial.es/db5769edebf93b0cdfb9feb050e3a7e2/crop/0x497/1146x1258/resize/746/f/jpg/assets/multimedia/imagenes/2020/07/29/15960458319949.jpg',
@@ -86,7 +88,8 @@ app.get('/climbers/getAll', (req, res) => {
         "Ganador de múltiples competencias de escalada deportiva", 
 
         "Creador de la serie de videos de escalada 'Progression'"  
-      ]
+      ],
+      link: ''
     },
     {
       img: 'https://www.lacrux.com/wp-content/uploads/2018/04/Warum-Adam-Ondra-Silence-mit-9c-bewertete-1024x444.jpg',
@@ -99,7 +102,8 @@ app.get('/climbers/getAll', (req, res) => {
         "Ganador de múltiples campeonatos mundiales de escalada", 
 
         "Primer escalador en encadenar una vía de grado 5.15c"   
-      ]
+      ],
+      link: 'https://www.adamondra.com/'
     },
     {
       img: 'https://woguclimbing.com/wp-content/uploads/2019/08/Janja-Garnbret-web-1024x795.jpg',
@@ -110,7 +114,8 @@ app.get('/climbers/getAll', (req, res) => {
         "Ganadora de múltiples campeonatos mundiales de escalada en dificultad y combinada",
         "Medallista de oro en los Juegos Olímpicos de Tokio 2020 en la modalidad de escalada combinada",
         "Primera mujer en encadenar una vía de grado 5.15b"
-      ]
+      ],
+      link: 'https://janja-garnbret.com/'
     }
     
   ]
