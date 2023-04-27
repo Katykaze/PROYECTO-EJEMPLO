@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/MainView.vue')
     },
     {
+      path: '/formClimber',
+      name: 'formClimber',
+      component: () => import('../views/AddClimberView.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../views/LoginView.vue')

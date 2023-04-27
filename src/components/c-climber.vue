@@ -13,7 +13,7 @@
         </div>
         <div v-if="achievements && achievements.length !== 0">
           <ul
-            class="c-climber_info--logros"
+            class="c-climber_info--achievements"
             v-for="(achievement, index) in achievements"
             :key="index"
           >
@@ -88,7 +88,10 @@ export default {
   opacity: 0.38;
   transition: background 0.3s, opacity 0.3s;
   color: var(--color-text-secondary);
-  cursor: pointer;
+  &.c-climber_info--link {
+    // color: var(--color-text-secondary);
+    background-color: var(--color-text-secondary);
+  }
 }
 
 .c-climber_info--titleAch {
@@ -105,22 +108,22 @@ export default {
   justify-content: center;
   align-items: center;
   align-self: center;
-  a {
-    text-decoration: none;
+  &:hover {
+    box-shadow: 0px 0px 4px 3px var(--color-secondary);
+  }
+  &.c-climber_info--link{
+    color: var(--color-text-secondary);
   }
 }
-.c-climber_info--container:hover {
-  background-color: var(--color-button);
 
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0px 0px 4px 3px var(--color-secondary);
-  a {
-    color: var(--color-secondary);
-  }
-}
 .c-climber_info--link {
   margin: auto;
   text-decoration: none;
+  color: var(--color-text-primary);
+  &:hover {
+    background-color: var(--color-text-secondary);
+    border-radius: 5px;
+    padding: 2px;
+  }
 }
 </style>

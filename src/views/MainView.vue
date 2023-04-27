@@ -11,15 +11,17 @@
         :src="climber"
         :achievements="climber.achievements"
       />
-      <div class="l-main__main--button">
+      <div class="l-main__button">
         <CButton @click="doLogout">Log Out</CButton>
+        <CButton @click="goNext()">Añadir Escalador</CButton>
       </div>
     </template>
     <template #footer>
-      <CInput v-model:src="name" placeholder="Enter a name"></CInput>
+      
+      <!-- <CInput v-model:src="name" placeholder="Enter a name"></CInput>
       <CInput v-model:src="age" placeholder="Enter a age"></CInput>
       <CInput v-model:src="nationality" placeholder="Enter a nationality"></CInput>
-      <CButton @click="doSubmit()">Submit</CButton>
+      <CButton @click="doSubmit()">Submit</CButton> -->
       <p>📲 social Media</p>
     </template>
   </l-main>
@@ -52,6 +54,9 @@ export default {
     }
   },
   methods: {
+    goNext(){
+    this.$router.push({ name: 'formClimber' })
+  },
     async doSubmit() {
       try {
         const climber = {
@@ -86,7 +91,8 @@ export default {
   },
   created() {
     this.getAllClimbers()
-  }
+  },
+ 
 }
 </script>
 
@@ -97,7 +103,7 @@ export default {
   font-weight: 700;
   margin-bottom: 50px;
 }
-.l-main__main--button {
+.l-main__button {
   display: flex;
   justify-content: center;
   align-items: center;
