@@ -11,7 +11,9 @@
         :src="climber"
         :achievements="climber.achievements"
       />
-      <CButton :onclick="doLogout">Log Out</CButton>
+      <div class="l-main__main--button">
+        <CButton :onclick="doLogout">Log Out</CButton>
+      </div>
     </template>
     <template #footer>
       <p>📲 social Media</p>
@@ -70,10 +72,10 @@ export default {
   font-weight: 700;
   margin-bottom: 50px;
 }
-.my-button{
+.l-main__main--button{
   display: flex;
   justify-content: center;
-  
+  align-items: center;
+  margin-bottom: 50px;
 }
-
 </style>

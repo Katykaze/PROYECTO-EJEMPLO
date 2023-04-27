@@ -34,6 +34,7 @@ export default{
   border: none;
   transition: 0.4s;
   
+  
 }
 .my-button:hover {
   color: var(--color-text-secondary);

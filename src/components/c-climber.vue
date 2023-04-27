@@ -105,8 +105,10 @@ export default {
   display: flex; 
   justify-content: center; 
   align-items: center;
+  align-self: center;
   a {
     text-decoration: none;
+    
   }
 }
 .c-climber_info--container:hover {
