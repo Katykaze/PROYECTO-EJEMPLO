@@ -1,24 +1,19 @@
 <template>
-  <button class="my-button"  v-bind="$attrs" @click="$emit('myClick')"><slot></slot></button>
+  <button class="my-button" v-bind="$attrs"><slot></slot></button>
 </template>
 
 <!-- {{ isSending ? 'Sending' : defaultString }} -->
 
 <script>
-export default{
-    name: 'CButton',
-    inheritAttrs:false,
-    props:{
-      isSending:{
-        type:Boolean,
-        default:false
-      }
-    },
-    methods:{
-      onClick(){
-        this.$emit('myClick');
-      }
-    } 
+export default {
+  name: 'CButton',
+  inheritAttrs: false,
+  props: {
+    isSending: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -33,8 +28,6 @@ export default{
   cursor: pointer;
   border: none;
   transition: 0.4s;
-  
-  
 }
 .my-button:hover {
   color: var(--color-text-secondary);

@@ -12,10 +12,14 @@
         :achievements="climber.achievements"
       />
       <div class="l-main__main--button">
-        <CButton :onclick="doLogout">Log Out</CButton>
+        <CButton @click="doLogout">Log Out</CButton>
       </div>
     </template>
     <template #footer>
+      <CInput v-model:src="name" placeholder="Enter a name"></CInput>
+      <CInput v-model:src="age" placeholder="Enter a age"></CInput>
+      <CInput v-model:src="nationality" placeholder="Enter a nationality"></CInput>
+      <CButton @click="doSubmit()">Submit</CButton>
       <p>📲 social Media</p>
     </template>
   </l-main>
@@ -25,6 +29,7 @@
 import LMain from '../layouts/l-main.vue'
 import CClimber from '../components/c-climber.vue'
 import CButton from '../components/c-button.vue'
+import CInput from '../components/c-input.vue'
 import { userStore } from '../stores/user'
 import { climbersStore } from '../stores/climbers'
 
@@ -33,16 +38,36 @@ export default {
   components: {
     LMain,
     CButton,
-    CClimber
+    CClimber,
+    CInput
   },
   data() {
     return {
       climbers: [],
       isPending: true,
-      error: false
+      error: false,
+      name: '',
+      age: '',
+      nationality: ''
     }
   },
   methods: {
+    async doSubmit() {
+      try {
+        const climber = {
+          name: this.name,
+          age: this.age,
+          nationality: this.nationality,
+          achievements: []
+        }
+        const useClimberStore = climbersStore()
+        this.climbers = await useClimberStore.addClimber(climber)
+        console.log(this.climbers)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
     doLogout() {
       const useUserStore = userStore()
       useUserStore.logout()
@@ -72,7 +97,7 @@ export default {
   font-weight: 700;
   margin-bottom: 50px;
 }
-.l-main__main--button{
+.l-main__main--button {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -19,19 +19,16 @@ const router = createRouter({
       name: 'not-found',
       component: () => import('../views/LoginView.vue')
     }
-    
   ]
 })
 
-
-router.beforeEach((to,from,next) =>{
-  if(to.name === 'unkwnow'){
-    next({name:'login'})
+router.beforeEach((to, from, next) => {
+  if (to.name === 'unkwnow') {
+    return next({ name: 'login' })
   }
-  if(to.name === 'home' && !userStore().isLogged){
-    next({name:'login'})
+  if (to.name === 'home' && !userStore().isLogged) {
+    return next({ name: 'login' })
   }
-  next();
+  next()
 })
 export default router
-

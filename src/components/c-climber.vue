@@ -11,20 +11,17 @@
         <div class="c-climber_info--titleAch">
           <strong>Logros:</strong>
         </div>
-        <ul
-          v-if="achievements.length !== 0"
-          class="c-climber_info--logros"
-          v-for="(achievement, index) in achievements"
-          :key="index"
-        >
-          <li>{{ achievement }}</li>
-        </ul>
+        <div v-if="achievements && achievements.length !== 0">
+          <ul
+            class="c-climber_info--logros"
+            v-for="(achievement, index) in achievements"
+            :key="index"
+          >
+            <li>{{ achievement }}</li>
+          </ul>
+        </div>
         <p v-else>No hay Datos disponibles</p>
-        <a
-          class="c-climber_info--link"
-          v-if="src.link.length !== 0"
-          v-bind:href="src.link"
-          target="_blank"
+        <a class="c-climber_info--link" v-if="src.link" v-bind:href="src.link" target="_blank"
           >Más Información</a
         >
       </section>

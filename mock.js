@@ -3,6 +3,85 @@ const corss = require('cors')
 const app = express()
 const port = 8081
 
+const climbers = [
+  {
+    img: 'https://woguclimbing.com/wp-content/uploads/2017/06/alex-honnold-freerider-Jimmy-Chin-1024x539.jpg',
+    name: 'Alex Honnold',
+    age: '36',
+    nationality: 'Estados Unidos',
+    achievements: [
+      'Primer ascenso en solitario y sin cuerda de El Capitán en Yosemite',
+
+      'Ganador de múltiples premios de escalada',
+
+      "Autor del libro 'Alone on the Wall'"
+    ],
+    link: 'http://www.alexhonnold.com/'
+  },
+  {
+    img: 'https://www.deaventura.pe/blog/wp-content/uploads/2014/11/Lynn-en-Nose.jpg',
+    name: 'Lynn Hill',
+    age: '60',
+    nationality: 'Estados Unidos',
+    achievements: [
+      "Primera persona en escalar la vía 'The Nose' de El Capitán en Yosemite en libre",
+
+      'Ganadora de múltiples campeonatos mundiales de escalada',
+
+      "Autora del libro 'Climbing Free'"
+    ],
+    link: 'https://lynnhillclimbing.com/'
+  },
+  {
+    img: 'https://phantom-elmundo.unidadeditorial.es/db5769edebf93b0cdfb9feb050e3a7e2/crop/0x497/1146x1258/resize/746/f/jpg/assets/multimedia/imagenes/2020/07/29/15960458319949.jpg',
+    name: 'Chris Sharma',
+    age: '40',
+    nationality: 'Estados Unidos',
+    achievements: [
+      "Primer ascenso de la vía 'Biographie' en Céüse, Francia",
+
+      'Ganador de múltiples competencias de escalada deportiva',
+
+      "Creador de la serie de videos de escalada 'Progression'"
+    ],
+    link: ''
+  },
+  {
+    img: 'https://www.lacrux.com/wp-content/uploads/2018/04/Warum-Adam-Ondra-Silence-mit-9c-bewertete-1024x444.jpg',
+    name: 'Adam Ondra',
+    age: '30',
+    nationality: 'República Checa',
+    achievements: [
+      "Primer ascenso de la vía 'Silence' en Flatanger Cave, Noruega",
+
+      'Ganador de múltiples campeonatos mundiales de escalada',
+
+      'Primer escalador en encadenar una vía de grado 5.15c'
+    ],
+    link: 'https://www.adamondra.com/'
+  },
+  {
+    img: 'https://woguclimbing.com/wp-content/uploads/2019/08/Janja-Garnbret-web-1024x795.jpg',
+    name: 'Janja Garnbret',
+    age: '22',
+    nationality: 'Eslovenia',
+    achievements: [
+      'Ganadora de múltiples campeonatos mundiales de escalada en dificultad y combinada',
+      'Medallista de oro en los Juegos Olímpicos de Tokio 2020 en la modalidad de escalada combinada',
+      'Primera mujer en encadenar una vía de grado 5.15b'
+    ],
+    link: 'https://janja-garnbret.com/'
+  },
+  {
+    img: 'https://ichef.bbci.co.uk/images/ic/640x360/p056zyfn.jpg',
+    name: 'Margo Hayes',
+    age: '30',
+    nationality: 'República Checa',
+    achievements: [],
+    link: ''
+  }
+]
+
 app.listen(port, () => {
   console.log(`Example app listening on por ${port}`)
 })
@@ -47,90 +126,13 @@ app.post('/user/login', (req, res) => {
   }
 })
 
-app.post('/climbers/new' , (req, res) => {
-  const climber = req.body;
+app.post('/climbers/new', (req, res) => {
+  const climber = req.body
   console.log('climber: ', climber)
+  climbers.push(climber)
+  res.send(climbers)
 })
 
 app.get('/climbers/getAll', (req, res) => {
-  const response = [
-    {
-      img: 'https://woguclimbing.com/wp-content/uploads/2017/06/alex-honnold-freerider-Jimmy-Chin-1024x539.jpg',
-      name: 'Alex Honnold',
-      age: '36',
-      nationality: 'Estados Unidos',
-      achievements: [
-        'Primer ascenso en solitario y sin cuerda de El Capitán en Yosemite',
-
-        'Ganador de múltiples premios de escalada',
-
-        "Autor del libro 'Alone on the Wall'"
-      ],
-      link: 'http://www.alexhonnold.com/'
-    },
-    {
-      img: 'https://www.deaventura.pe/blog/wp-content/uploads/2014/11/Lynn-en-Nose.jpg',
-      name: 'Lynn Hill',
-      age: '60',
-      nationality: 'Estados Unidos',
-      achievements: [
-         "Primera persona en escalar la vía 'The Nose' de El Capitán en Yosemite en libre", 
-
-         "Ganadora de múltiples campeonatos mundiales de escalada", 
- 
-         "Autora del libro 'Climbing Free'" 
-      ],
-      link:'https://lynnhillclimbing.com/'
-    },
-    {
-      img: 'https://phantom-elmundo.unidadeditorial.es/db5769edebf93b0cdfb9feb050e3a7e2/crop/0x497/1146x1258/resize/746/f/jpg/assets/multimedia/imagenes/2020/07/29/15960458319949.jpg',
-      name: 'Chris Sharma',
-      age: '40',
-      nationality: 'Estados Unidos',
-      achievements: [
-         "Primer ascenso de la vía 'Biographie' en Céüse, Francia", 
-
-        "Ganador de múltiples competencias de escalada deportiva", 
-
-        "Creador de la serie de videos de escalada 'Progression'"  
-      ],
-      link: ''
-    },
-    {
-      img: 'https://www.lacrux.com/wp-content/uploads/2018/04/Warum-Adam-Ondra-Silence-mit-9c-bewertete-1024x444.jpg',
-      name: 'Adam Ondra',
-      age: '30',
-      nationality: 'República Checa',
-      achievements: [
-         "Primer ascenso de la vía 'Silence' en Flatanger Cave, Noruega", 
-
-        "Ganador de múltiples campeonatos mundiales de escalada", 
-
-        "Primer escalador en encadenar una vía de grado 5.15c"   
-      ],
-      link: 'https://www.adamondra.com/'
-    },
-    {
-      img: 'https://woguclimbing.com/wp-content/uploads/2019/08/Janja-Garnbret-web-1024x795.jpg',
-      name: 'Janja Garnbret',
-      age: '22',
-      nationality: 'Eslovenia',
-      achievements: [
-        "Ganadora de múltiples campeonatos mundiales de escalada en dificultad y combinada",
-        "Medallista de oro en los Juegos Olímpicos de Tokio 2020 en la modalidad de escalada combinada",
-        "Primera mujer en encadenar una vía de grado 5.15b"
-      ],
-      link: 'https://janja-garnbret.com/'
-    },
-    {
-      img: 'https://ichef.bbci.co.uk/images/ic/640x360/p056zyfn.jpg',
-      name: 'Margo Hayes',
-      age: '30',
-      nationality: 'República Checa',
-      achievements:'',
-      link:''
-    }
-    
-  ]
-  res.send(response)
+  res.send(climbers)
 })
