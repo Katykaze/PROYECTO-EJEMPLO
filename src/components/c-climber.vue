@@ -12,17 +12,21 @@
           <strong>Logros:</strong>
         </div>
         <ul
+          v-if="achievements.length !== 0"
           class="c-climber_info--logros"
           v-for="(achievement, index) in achievements"
           :key="index"
         >
           <li>{{ achievement }}</li>
         </ul>
-        <div class="c-climber_info--container">
-          <a class="c-climber_info--container--link" v-if="src.link.length !== 0" v-bind:href="src.link"
-            target="_blank">Más Información</a
-          >
-        </div>
+        <p v-else>No hay Datos disponibles</p>
+        <a
+          class="c-climber_info--link"
+          v-if="src.link.length !== 0"
+          v-bind:href="src.link"
+          target="_blank"
+          >Más Información</a
+        >
       </section>
     </article>
   </main>
@@ -38,22 +42,20 @@ export default {
     },
     achievements: {
       type: Array,
-      required: true
+      required: false
     }
   }
 }
 </script>
 
 <style lang="scss">
-
 .c-climber__wrapper {
   display: flex;
   gap: 60px;
   justify-content: space-between;
   @media only screen and (max-width: 600px) {
     flex-direction: column;
-  
-}
+  }
 }
 
 .c-climber__img {
@@ -102,24 +104,26 @@ export default {
   margin-top: 5px;
   font-weight: bold;
   width: 30%;
-  display: flex; 
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   align-items: center;
   align-self: center;
   a {
     text-decoration: none;
-    
   }
 }
 .c-climber_info--container:hover {
   background-color: var(--color-button);
- 
+
   border-radius: 5px;
   border: none;
   box-shadow: 0px 0px 4px 3px var(--color-secondary);
-  a{
+  a {
     color: var(--color-secondary);
   }
-  
+}
+.c-climber_info--link {
+  margin: auto;
+  text-decoration: none;
 }
 </style>

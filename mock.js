@@ -47,6 +47,11 @@ app.post('/user/login', (req, res) => {
   }
 })
 
+app.post('/climbers/new' , (req, res) => {
+  const climber = req.body;
+  console.log('climber: ', climber)
+})
+
 app.get('/climbers/getAll', (req, res) => {
   const response = [
     {
@@ -116,6 +121,14 @@ app.get('/climbers/getAll', (req, res) => {
         "Primera mujer en encadenar una vía de grado 5.15b"
       ],
       link: 'https://janja-garnbret.com/'
+    },
+    {
+      img: 'https://ichef.bbci.co.uk/images/ic/640x360/p056zyfn.jpg',
+      name: 'Margo Hayes',
+      age: '30',
+      nationality: 'República Checa',
+      achievements:'',
+      link:''
     }
     
   ]
