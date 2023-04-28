@@ -26,12 +26,13 @@ const router = createRouter({
     }
   ]
 })
+const authRoutes = ['home', 'formClimber']
 
 router.beforeEach((to, from, next) => {
   if (to.name === 'unkwnow') {
     return next({ name: 'login' })
   }
-  if (to.name === 'home' && !userStore().isLogged) {
+  if (authRoutes.includes(to.name) && !userStore().isLogged) {
     return next({ name: 'login' })
   }
   next()

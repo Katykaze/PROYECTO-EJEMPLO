@@ -9,8 +9,8 @@
       <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
       <CButton @click="addAchievement()">Añadir</CButton>
       <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
-      <ul v-else>
-        <li v-for="(achievement, index) in achievements" :key="index">{{ achievement }}</li>
+      <ul class="v-addClimber__list" v-else>
+        <li  v-for="(achievement, index) in achievements" :key="index">{{ achievement }}</li>
         <CButton @click="removeAchievement(index)">Eliminar</CButton>
       </ul>
     </template>
@@ -39,7 +39,7 @@ export default {
       name: '',
       age: '',
       nationality: '',
-      achievement:'',
+      achievement: '',
       achievements: [],
       climbers: []
     }
@@ -81,8 +81,13 @@ export default {
     },
     removeAchievement(index) {
       this.achievements.splice(index, 1)
-    },
-  
+    }
   }
 }
 </script>
+<style lang="scss">
+.my-button{
+margin: auto;
+}
+
+</style>

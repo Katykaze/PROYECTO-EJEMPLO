@@ -21,9 +21,11 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
-      margin-bottom: 200px;
+      margin-bottom: 3%;
       min-width: 400px;
-      /* height: 100%; */
+      height: 100%;
+      width: 100%;
+      overflow: auto;
     }
     .l-forms__form{
       display: flex;
