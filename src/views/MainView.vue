@@ -17,11 +17,6 @@
       </div>
     </template>
     <template #footer>
-      
-      <!-- <CInput v-model:src="name" placeholder="Enter a name"></CInput>
-      <CInput v-model:src="age" placeholder="Enter a age"></CInput>
-      <CInput v-model:src="nationality" placeholder="Enter a nationality"></CInput>
-      <CButton @click="doSubmit()">Submit</CButton> -->
       <p>📲 social Media</p>
     </template>
   </l-main>
@@ -54,9 +49,9 @@ export default {
     }
   },
   methods: {
-    goNext(){
-    this.$router.push({ name: 'formClimber' })
-  },
+    goNext() {
+      this.$router.push({ name: 'formClimber' })
+    },
     async doSubmit() {
       try {
         const climber = {
@@ -91,8 +86,7 @@ export default {
   },
   created() {
     this.getAllClimbers()
-  },
- 
+  }
 }
 </script>
 

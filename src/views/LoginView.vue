@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     publishedNamedPassword() {
-      return `Welcome ${this.username} Tu contraseña es ${this.password}`
+      return `Bienvenida ${this.username} Tu contraseña es ${this.password}`
     },
     showErrorMessage() {
       //me devuelve true si NO está vacío
