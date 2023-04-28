@@ -9,7 +9,7 @@
       <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
       <CButton @click="addAchievement()">Añadir</CButton>
       <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
-      <ul class="v-addClimber__list" v-else>
+      <ul v-else class="v-addClimber__list">
         <li  v-for="(achievement, index) in achievements" :key="index">{{ achievement }}</li>
         <CButton @click="removeAchievement(index)">Eliminar</CButton>
       </ul>
@@ -88,6 +88,9 @@ export default {
 <style lang="scss">
 .my-button{
 margin: auto;
+}
+.v-addClimber__list{
+  text-align: center;
 }
 
 </style>
