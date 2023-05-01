@@ -102,5 +102,13 @@ export default {
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  width: 100%;
+}
+@media screen and (max-width: 600px) {
+  .l-main__content{
+      font-size: 0.7em;
+  }
+ 
+  
 }
 </style>

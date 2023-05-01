@@ -101,10 +101,14 @@ span[class*='v-login'] {
 // media query
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .v-login__info{
+    order:2;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
