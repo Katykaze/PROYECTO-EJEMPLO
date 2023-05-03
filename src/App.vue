@@ -9,10 +9,9 @@ import { defineComponent } from 'vue'
 import './styles/main.css'
 import './styles/pstyle.scss'
 
-
 export default defineComponent({
   // components: { LoginView }
-  name:'app'
+  name: 'app'
 })
 //EN APP.VUE SE DEFINE EL LAYOUT
 </script>
@@ -27,7 +26,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: auto;
   flex-direction: column;
+  overflow: auto;
 }
 </style>
