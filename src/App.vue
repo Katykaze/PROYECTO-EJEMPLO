@@ -22,11 +22,12 @@ export default defineComponent({
   background-image: var(--color-background-image);
   background-size: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  // display: flex;
-  // justify-content: center;
-  // text-align: center;
-  // flex-direction: row;
+  // display: grid;
+  // grid-template-columns: 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  flex-direction: column;
 }
 </style>

@@ -1,24 +1,26 @@
 <template>
+  <div class="addClimber-view">
   <l-forms>
-    <template #form>
-      <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
-      <CInput v-model:src="name" placeholder="Introduce nombre"></CInput>
-      <CInput v-model:src="age" placeholder="Introduce  edad"></CInput>
-      <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
-      <p>Añade Logros del escalador</p>
-      <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
-      <CButton @click="addAchievement()">Añadir</CButton>
-      <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
-      <ul v-else class="v-addClimber__list">
-        <li v-for="(achievement, index) in achievements" :key="index">{{ achievement }}</li>
-        <CButton @click="removeAchievement(index)">Eliminar</CButton>
-      </ul>
-    </template>
-    <template #button>
-      <CButton @click="doSubmit()">Enviar</CButton>
-      <CButton @click="goBack()">Atrás</CButton>
-    </template>
+      <template #form>
+        <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
+        <CInput v-model:src="name" placeholder="Introduce nombre"></CInput>
+        <CInput v-model:src="age" placeholder="Introduce  edad"></CInput>
+        <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
+        <p>Añade Logros del escalador</p>
+        <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
+        <CButton @click="addAchievement()">Añadir</CButton>
+        <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
+        <ul v-else class="v-addClimber__list">
+          <li v-for="(achievement, index) in achievements" :key="index">{{ achievement }}</li>
+          <CButton @click="removeAchievement(index)">Eliminar</CButton>
+        </ul>
+      </template>
+      <template #button>
+        <CButton @click="doSubmit()">Enviar</CButton>
+        <CButton @click="goBack()">Atrás</CButton>
+      </template>   
   </l-forms>
+</div>
 </template>
 <script>
 import LForms from '../layouts/l-forms.vue'
@@ -88,18 +90,11 @@ export default {
 .v-addClimber__list {
   text-align: center;
 }
-
-.l-forms__form {
-  @media screen and (min-width: 600px) {
-    //QUIERO COLOCAR LOS DE DOS EN DOS CON FLEX WRAP, PERO NO APLICA ????
-    
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-  }
-
+.addClimber-view {
+  border: 2px solid green;
+  height: 100%;
+  width: 100%;
   @media screen and (max-width: 600px) {
-    
     text-align: center;
     align-items: center;
     background: var(--color-background-box-gradient);
@@ -111,18 +106,40 @@ export default {
   }
 }
 
-.c-input__input {
-  @media screen and (max-width: 600px) {
-    margin-top: 8%;
-    gap: 0px;
-  }
-}
+// .l-forms__form {
+//   @media screen and (min-width: 600px) {
+//     //QUIERO COLOCAR LOS DE DOS EN DOS CON FLEX WRAP, PERO NO APLICA ????
 
-.l-forms__button {
-  @media screen and (max-width: 600px) {
-    flex-direction: row;
-    width: 80%;
-  }
+//     flex-wrap: wrap;
+//     justify-content: space-between;
 
-}
+//   }
+
+//   @media screen and (max-width: 600px) {
+
+//     text-align: center;
+//     align-items: center;
+//     background: var(--color-background-box-gradient);
+//     width: 80%;
+//     font-size: 0.6em;
+//     color: var(--color-button);
+//     margin-bottom: 5%;
+//     border-radius: 10px;
+//   }
+// }
+
+// .c-input__input {
+//   @media screen and (max-width: 600px) {
+//     margin-top: 8%;
+//     gap: 0px;
+//   }
+// }
+
+// .l-forms__button {
+//   @media screen and (max-width: 600px) {
+//     flex-direction: row;
+//     width: 80%;
+//   }
+
+// }
 </style>
