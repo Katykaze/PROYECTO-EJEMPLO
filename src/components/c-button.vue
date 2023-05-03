@@ -22,7 +22,8 @@ export default {
   color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   padding: 10px 20px;
-  width: 150px;
+  min-width: 60px;
+  max-width: 100px;
   background-color: var(--color-button);
   border-radius: 5px;
   cursor: pointer;

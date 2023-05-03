@@ -35,7 +35,7 @@ export default {
 .l-forms__form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  text-align: center;
 }
 .l-forms__button {
   display: flex;

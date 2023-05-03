@@ -1,33 +1,27 @@
 <template>
-  <div class="v-login__info">
+  <section class="v-login__info">
     <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
     <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
     <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
-  </div>
-  <l-forms>
-    <template #form>
-      <CInput v-model:src="username" placeholder="Introduce tu nombre" />
-      <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
-    </template>
+  </section>
+  <section class="v-login__form">
+    <CInput v-model:src="username" placeholder="Introduce tu nombre" />
+    <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
 
-    <template #button>
-      <CButton :onClick="submitData" :isSending="isSending">{{
-        isSending ? 'Sending' : 'Send'
-      }}</CButton>
-    </template>
-  </l-forms>
+    <CButton :onClick="submitData" :isSending="isSending">{{
+      isSending ? 'Sending' : 'Send'
+    }}</CButton>
+  </section>
 </template>
 <script>
-import LForms from '../layouts/l-forms.vue'
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
 import { userStore } from '../stores/user'
 //porque en ese archivo pone export const en lugar de export default
 
 export default {
-  name: 'Login',
+  name: 'LoginView',
   components: {
-    LForms,
     CInput,
     CButton
   },
@@ -78,10 +72,10 @@ export default {
 
       this.$router.push({ name: 'home' })
     },
-    async wait(ms){
-        return new Promise((resolve,reject)=>{
-          setTimeout(resolve,ms)
-        })
+    async wait(ms) {
+      return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms)
+      })
     }
   }
 }
@@ -98,28 +92,11 @@ span[class*='v-login'] {
   white-space: pre-line;
 }
 
-// media query
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  // .v-login__info{
-  //   order:2;
-  // }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+.v-login__form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 </style>

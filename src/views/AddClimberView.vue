@@ -1,27 +1,32 @@
 <template>
-  <l-forms yellow>
-    <template #form>
+  <article class="v-add">
+    <section class="v-add__info">
       <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
       <CInput v-model:src="name" placeholder="Introduce nombre"></CInput>
       <CInput v-model:src="age" placeholder="Introduce  edad"></CInput>
       <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
+    </section>
+    <section class="v-add__achievements">
       <p>Añade Logros del escalador</p>
       <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
       <CButton @click="addAchievement()">Añadir</CButton>
+    </section>
+    <section class="v-add__achievements--list">
       <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
-      <ul v-else class="v-addClimber__list">
-        <li v-for="(achievement, index) in achievements" :key="index">{{ achievement }}</li>
-        <CButton @click="removeAchievement(index)">Eliminar</CButton>
+      <ul v-else>
+        <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement">
+          {{ achievement }}
+          <CButton @click="removeAchievement(index)">-</CButton>
+        </li>
       </ul>
-    </template>
-    <template #button>
+    </section>
+    <section class="v-add__buttons">
       <CButton @click="doSubmit()">Enviar</CButton>
       <CButton @click="goBack()">Atrás</CButton>
-    </template>
-  </l-forms>
+    </section>
+  </article>
 </template>
 <script>
-import LForms from '../layouts/l-forms.vue'
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
 import { climbersStore } from '../stores/climbers'
@@ -29,7 +34,6 @@ import { climbersStore } from '../stores/climbers'
 export default {
   name: 'AddClimber',
   components: {
-    LForms,
     CInput,
     CButton
   },
@@ -81,63 +85,66 @@ export default {
 }
 </script>
 <style lang="scss">
-.my-button {
-  margin: auto;
+.v-add {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-background-box-gradient);
+  color: black;
+  padding: 40px;
+  border-radius: 10px;
+  width: 50%;
+  height: 50%;
+  overflow-y: auto;
+}
+.v-add__info {
+  display: grid;
+  grid-auto-rows: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  place-items: center;
+  gap: 20px;
 }
 
-.v-addClimber__list {
+.v-add__achievements {
   text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
-// .addClimber-view {
-//   border: 2px solid green;
-//   height: 100%;
-//   width: 100%;
-//   @media screen and (max-width: 600px) {
-//     text-align: center;
-//     align-items: center;
-//     background: var(--color-background-box-gradient);
-//     width: 80%;
-//     font-size: 0.6em;
-//     color: var(--color-button);
-//     margin-bottom: 5%;
-//     border-radius: 10px;
-//   }
-// }
 
-// .l-forms__form {
-//   @media screen and (min-width: 600px) {
-//     //QUIERO COLOCAR LOS DE DOS EN DOS CON FLEX WRAP, PERO NO APLICA ????
+.v-add__input {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
 
-//     flex-wrap: wrap;
-//     justify-content: space-between;
+.v-add__achievement {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-//   }
+.v-add__achievements--list {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-//   @media screen and (max-width: 600px) {
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
 
-//     text-align: center;
-//     align-items: center;
-//     background: var(--color-background-box-gradient);
-//     width: 80%;
-//     font-size: 0.6em;
-//     color: var(--color-button);
-//     margin-bottom: 5%;
-//     border-radius: 10px;
-//   }
-// }
-
-// .c-input__input {
-//   @media screen and (max-width: 600px) {
-//     margin-top: 8%;
-//     gap: 0px;
-//   }
-// }
-
-// .l-forms__button {
-//   @media screen and (max-width: 600px) {
-//     flex-direction: row;
-//     width: 80%;
-//   }
-
-// }
+.v-add__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 </style>
