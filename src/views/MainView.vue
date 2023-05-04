@@ -12,8 +12,8 @@
         :achievements="climber.achievements"
       />
       <div class="l-main__button">
-        <CButton @click="doLogout">Log Out</CButton>
-        <CButton @click="goNext()">Añadir Escalador</CButton>
+        <CButton @click="doLogout" class="v-main__button--out">Log Out</CButton>
+        <CButton @click="goNext()" class="v-main__button--add">Añadir Escalador</CButton>
       </div>
     </template>
     <template #footer>
@@ -90,7 +90,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .l-main__header--tittle {
   margin-top: 50px;
   font-size: 2em;
@@ -99,16 +99,22 @@ export default {
 }
 .l-main__button {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   margin-bottom: 50px;
   width: 100%;
 }
 @media screen and (max-width: 600px) {
-  .l-main__content{
-      font-size: 0.7em;
+  .l-main__content {
+    font-size: 0.7em;
   }
- 
-  
+}
+.v-main__button--out {
+  margin-right: auto;
+  margin-left: 10px;
+}
+.v-main__button--add {
+  margin-left: auto;
+  margin-right: 10px;
 }
 </style>

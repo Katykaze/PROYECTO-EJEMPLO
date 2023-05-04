@@ -42,6 +42,5 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 60px;
-  overflow: auto;
 }
 </style>

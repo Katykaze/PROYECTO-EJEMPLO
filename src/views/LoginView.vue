@@ -1,9 +1,14 @@
 <template>
   <section class="v-login__info">
-    <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
+    <transition name="fade">
+      <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
+    </transition>
     <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
-    <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
+    <transition name="fade">
+      <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
+    </transition>
   </section>
+
   <section class="v-login__form">
     <CInput v-model:src="username" placeholder="Introduce tu nombre" />
     <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
@@ -86,10 +91,7 @@ export default {
   justify-content: center;
   text-align: center;
   color: var(--color-text-primary);
-}
-span[class*='v-login'] {
-  margin-top: 200px;
-  white-space: pre-line;
+  margin-bottom: 40px;
 }
 
 .v-login__form {
@@ -98,5 +100,13 @@ span[class*='v-login'] {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 </style>

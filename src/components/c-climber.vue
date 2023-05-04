@@ -50,9 +50,6 @@ export default {
   display: flex;
   gap: 60px;
   justify-content: space-between;
-  @media only screen and (max-width: 600px) {
-    flex-direction: column;
-  }
 }
 
 .c-climber__img {
@@ -65,22 +62,15 @@ export default {
     height: 100%;
     object-fit: cover;
   }
-  @media only screen and (max-width: 600px) {
-    margin-left: 8%;
-  }
+ 
 }
+
 
 .c-climber__info {
   display: flex;
   flex-direction: column;
   gap: 20px;
   flex: 2;
-  @media screen and (max-width: 600px) {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size: 1em;
-  }
 }
 .c-climber__info:hover {
   border: var(--color-secondary);
@@ -111,7 +101,7 @@ export default {
   &:hover {
     box-shadow: 0px 0px 4px 3px var(--color-secondary);
   }
-  &.c-climber_info--link{
+  &.c-climber_info--link {
     color: var(--color-text-secondary);
   }
 }
@@ -124,6 +114,22 @@ export default {
     background-color: var(--color-text-secondary);
     border-radius: 5px;
     padding: 2px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .c-climber__wrapper {
+    flex-direction: column;
+  }
+  .c-climber__img {
+    display: block;
+    margin: 0 auto;
+  }
+  .c-climber__info {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
   }
 }
 </style>

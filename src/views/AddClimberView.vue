@@ -1,30 +1,32 @@
 <template>
-  <article class="v-add">
-    <section class="v-add__info">
-      <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
-      <CInput v-model:src="name" placeholder="Introduce nombre"></CInput>
-      <CInput v-model:src="age" placeholder="Introduce  edad"></CInput>
-      <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
-    </section>
-    <section class="v-add__achievements">
-      <p>Añade Logros del escalador</p>
-      <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
-      <CButton @click="addAchievement()">Añadir</CButton>
-    </section>
-    <section class="v-add__achievements--list">
-      <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
-      <ul v-else>
-        <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement">
-          {{ achievement }}
-          <CButton @click="removeAchievement(index)">-</CButton>
-        </li>
-      </ul>
-    </section>
-    <section class="v-add__buttons">
-      <CButton @click="doSubmit()">Enviar</CButton>
-      <CButton @click="goBack()">Atrás</CButton>
-    </section>
-  </article>
+
+    <article class="v-add">
+      <section class="v-add__info">
+        <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
+        <CInput v-model:src="name" placeholder="Introduce nombre"></CInput>
+        <CInput v-model:src="age" placeholder="Introduce  edad"></CInput>
+        <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
+      </section>
+      <section class="v-add__achievements">
+        <p>Añade Logros del escalador</p>
+        <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
+        <CButton @click="addAchievement()">Añadir</CButton>
+      </section>
+      <section class="v-add__achievements--list">
+        <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
+        <ul v-else>
+          <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement">
+            {{ achievement }}
+            <CButton @click="removeAchievement(index)">-</CButton>
+          </li>
+        </ul>
+      </section>
+      <section class="v-add__buttons">
+        <CButton @click="doSubmit()">Enviar</CButton>
+        <CButton @click="goBack()">Atrás</CButton>
+      </section>
+    </article>
+ 
 </template>
 <script>
 import CInput from '../components/c-input.vue'
@@ -96,6 +98,7 @@ export default {
   width: 50%;
   height: 50%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .v-add__info {
   display: grid;
@@ -147,4 +150,5 @@ export default {
   justify-content: center;
   gap: 10px;
 }
+
 </style>
