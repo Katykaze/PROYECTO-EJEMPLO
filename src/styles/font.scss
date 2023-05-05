@@ -1,0 +1,58 @@
+$weights: (
+  'thin': 100,
+  'light': 200,
+  'book': 300,
+  'medium': 400,
+  'bold': 700
+);
+
+$fixedSizes: (
+  'xxl': 3rem,
+  'xl': 2.1rem,
+  'l': 1.6rem,
+  'm': 1.4rem,
+  's': 1.2rem,
+  'xs': 1rem
+);
+
+/**
+ * Use it like
+ *
+ *   @extend %typo-xl-bold
+ */
+@each $weightName, $weight in $weights {
+  @each $sizeName, $size in $fixedSizes {
+    %typo-fixed-#{$sizeName}-#{$weightName} {
+      // font-family: 'Roboto' !important;
+      font-weight: $weight;
+      font-size: $size;
+    }
+
+    %typo-#{$sizeName}-#{$weightName} {
+      @extend %typo-fixed-#{$sizeName}-#{$weightName};
+    }
+  }
+}
+
+/**
+ * Text utility classes.
+ *		.text-[size]-weight
+ *
+ * @param {[s, m, l, xl, xxl]} size
+ * @param {[light, book, medium, bold]} weight
+ *
+ * @example
+ *		.text-s-light
+ *		.text-xl-bold
+ */
+
+@each $weightName, $weight in $weights {
+  @each $sizeName, $size in $fixedSizes {
+    .text-#{$sizeName}-#{$weightName} {
+      @extend %typo-#{$sizeName}-#{$weightName};
+    }
+    .text-fixed-#{$sizeName}-#{$weightName} {
+      @extend %typo-fixed-#{$sizeName}-#{$weightName};
+    }
+  }
+}

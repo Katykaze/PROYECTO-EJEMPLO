@@ -1,5 +1,5 @@
 <template>
-
+  <div class="v-add__principal-container">
     <article class="v-add">
       <section class="v-add__info">
         <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
@@ -26,7 +26,7 @@
         <CButton @click="goBack()">Atrás</CButton>
       </section>
     </article>
- 
+  </div>
 </template>
 <script>
 import CInput from '../components/c-input.vue'
@@ -87,6 +87,13 @@ export default {
 }
 </script>
 <style lang="scss">
+.v-add__principal-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .v-add {
   display: flex;
   flex-direction: column;
@@ -150,5 +157,4 @@ export default {
   justify-content: center;
   gap: 10px;
 }
-
 </style>

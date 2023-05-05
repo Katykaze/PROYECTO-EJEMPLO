@@ -86,25 +86,25 @@ export default {
 
 .c-climber_info--titleAch {
   margin-top: 20px;
-  font-size: 36px;
-  font-weight: bold;
+  // font-size: 36px;
+  // font-weight: bold;
 }
 
-.c-climber_info--container {
-  margin-top: 5px;
-  font-weight: bold;
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  &:hover {
-    box-shadow: 0px 0px 4px 3px var(--color-secondary);
-  }
-  &.c-climber_info--link {
-    color: var(--color-text-secondary);
-  }
-}
+// .c-climber_info--container {
+//   margin-top: 5px;
+//   font-weight: bold;
+//   width: 30%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   align-self: center;
+//   &:hover {
+//     box-shadow: 0px 0px 4px 3px var(--color-secondary);
+//   }
+//   &.c-climber_info--link {
+//     color: var(--color-text-secondary);
+//   }
+// }
 
 .c-climber_info--link {
   margin: auto;
@@ -129,7 +129,7 @@ export default {
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 1em;
+    // font-size: 1em;
   }
 }
 </style>
