@@ -1,22 +1,20 @@
 <template>
-  <section class="v-login__info">
-    <transition name="fade">
+  <article class="v-login">
+    <section class="v-login__info">
       <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
-    </transition>
-    <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
-    <transition name="fade">
+      <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
       <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
-    </transition>
-  </section>
+    </section>
 
-  <section class="v-login__form">
-    <CInput v-model:src="username" placeholder="Introduce tu nombre" />
-    <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
+    <section class="v-login__form">
+      <CInput v-model:src="username" placeholder="Introduce tu nombre" />
+      <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
 
-    <CButton :onClick="submitData" :isSending="isSending">{{
-      isSending ? 'Sending' : 'Send'
-    }}</CButton>
-  </section>
+      <CButton :onClick="submitData" :isSending="isSending">{{
+        isSending ? 'Sending' : 'Send'
+      }}</CButton>
+    </section>
+  </article>
 </template>
 <script>
 import CInput from '../components/c-input.vue'
@@ -86,12 +84,22 @@ export default {
 }
 </script>
 <style lang="scss">
+.v-login {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
 .v-login__info {
   display: flex;
   justify-content: center;
   text-align: center;
   color: var(--color-text-primary);
-  margin-bottom: 40px;
 }
 
 .v-login__form {
