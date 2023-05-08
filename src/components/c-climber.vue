@@ -5,9 +5,9 @@
         <img :src="src.img" alt="foto de escalador" />
       </section>
       <section class="c-climber__info">
-        <p class="c-climber__info--name">{{ src.name }}</p>
-        <p class="c-climber__info--age">{{ src.age }}</p>
-        <p class="c-climber__info--nationality">{{ src.nationality }}</p>
+        <p class="c-climber__info--name text-xxl-bold">{{ src.name }}</p>
+        <p class="c-climber__info--age text-l-medium">{{ src.age }}</p>
+        <p class="c-climber__info--nationality text-l-medium">{{ src.nationality }}</p>
         <div class="c-climber_info--titleAch">
           <strong>Logros:</strong>
         </div>
@@ -17,11 +17,11 @@
             v-for="(achievement, index) in achievements"
             :key="index"
           >
-            <li>{{ achievement }}</li>
+            <li class="text-l-medium">{{ achievement }}</li>
           </ul>
         </div>
         <p v-else>No hay Datos disponibles</p>
-        <a class="c-climber_info--link" v-if="src.link" v-bind:href="src.link" target="_blank"
+        <a class="c-climber_info--link text-xl-bold" v-if="src.link" v-bind:href="src.link" target="_blank"
           >Más Información</a
         >
       </section>
