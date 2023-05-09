@@ -1,5 +1,5 @@
 <template>
-  <button class="my-button" v-bind="$attrs"><slot></slot></button>
+  <button class="my-button text-xs-thin" v-bind="$attrs"><slot></slot></button>
 </template>
 
 <!-- {{ isSending ? 'Sending' : defaultString }} -->
@@ -18,7 +18,7 @@ export default {
 </script>
 <style lang="scss">
 .my-button {
-  font-size: 11px;
+  // font-size: 11px;
   color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   padding: 10px 20px;

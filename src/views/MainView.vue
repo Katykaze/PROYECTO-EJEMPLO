@@ -17,7 +17,9 @@
       </div>
     </template>
     <template #footer>
-      <p>📲 social Media</p>
+      <CIcon iconName="facebook" url="https://es-es.facebook.com/"></CIcon>
+      <CIcon iconName="instagram" url="https://www.instagram.com/"></CIcon>
+      <CIcon iconName="github" url="https://github.com/"></CIcon>
     </template>
   </l-main>
 </template>
@@ -27,6 +29,7 @@ import LMain from '../layouts/l-main.vue'
 import CClimber from '../components/c-climber.vue'
 import CButton from '../components/c-button.vue'
 import CInput from '../components/c-input.vue'
+import CIcon from '../components/c-icon.vue'
 import { userStore } from '../stores/user'
 import { climbersStore } from '../stores/climbers'
 
@@ -36,7 +39,8 @@ export default {
     LMain,
     CButton,
     CClimber,
-    CInput
+    CInput,
+    CIcon
   },
   data() {
     return {
