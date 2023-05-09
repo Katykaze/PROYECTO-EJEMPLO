@@ -43,4 +43,11 @@ export default {
   flex-direction: column;
   gap: 60px;
 }
+.l-main__footer{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap:20px
+ 
+}
 </style>

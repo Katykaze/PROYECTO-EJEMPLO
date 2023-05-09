@@ -8,16 +8,16 @@
         <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
       </section>
       <section class="v-add__achievements">
-        <p>Añade Logros del escalador</p>
+        <p class="v-add__pharagraph text-l-medium">Añade Logros del escalador</p>
         <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
         <CButton @click="addAchievement()">Añadir</CButton>
       </section>
       <section class="v-add__achievements--list">
-        <p v-if="!achievements || achievements.length === 0">No has añadido Logros</p>
+        <p v-if="!achievements || achievements.length === 0" class="text-l-medium">No has añadido Logros</p>
         <ul v-else>
-          <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement">
+          <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement text-l-medium">
             {{ achievement }}
-            <CButton @click="removeAchievement(index)">-</CButton>
+            <CButton @click="removeAchievement(index)"><CIcon iconName="paperbin" class="v-add__achievements--icon"></CIcon></CButton>
           </li>
         </ul>
       </section>
@@ -31,13 +31,15 @@
 <script>
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
+import CIcon from '../components/c-icon.vue'
 import { climbersStore } from '../stores/climbers'
 
 export default {
   name: 'AddClimber',
   components: {
     CInput,
-    CButton
+    CButton,
+    CIcon
   },
   data() {
     return {
@@ -156,5 +158,11 @@ export default {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+.v-add__achievements--icon{
+  fill:var(--color-text-primary);
+  &:hover{
+    fill:var(--color-text-secondary)
+  }
 }
 </style>

@@ -20,7 +20,7 @@
             <li class="text-l-medium">{{ achievement }}</li>
           </ul>
         </div>
-        <p v-else>No hay Datos disponibles</p>
+        <p v-else class="text-l-medium">No hay Datos disponibles</p>
         <a class="c-climber_info--link text-xl-bold" v-if="src.link" v-bind:href="src.link" target="_blank"
           >Más Información</a
         >

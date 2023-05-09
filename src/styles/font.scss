@@ -50,22 +50,15 @@ $fixedSizes: (
   @each $sizeName, $size in $fixedSizes {
     .text-#{$sizeName}-#{$weightName} {
       @extend %typo-#{$sizeName}-#{$weightName};
+      @media only screen and (max-width: 600px) {
+        font-size: $size * 0.5;
+      }
+      @media only screen and (min-width: 600px) and (max-width: 900px) {
+        font-size: $size * 0.8;
+      }
     }
     .text-fixed-#{$sizeName}-#{$weightName} {
       @extend %typo-fixed-#{$sizeName}-#{$weightName};
-    }
-  }
-}
-
-/*apply @media*/
-@each $weightName, $weight in $weights {
-  @each $sizeName, $size in $fixedSizes {
-    .text-#{$sizeName}-#{$weightName} {
-      @extend %typo-#{$sizeName}-#{$weightName};
-
-      @media only screen and (max-width: 600px) {
-        font-size: $size * 0.8;
-      }
     }
   }
 }

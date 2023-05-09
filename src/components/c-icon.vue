@@ -1,7 +1,7 @@
 <template>
   <div class="c-icon">
     <div class="c-icon__wrapper" v-if="url">
-      <a :href="url">
+      <a :href="url" :target="value">
         <svg class="c-icon__svg" xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" :viewBox="viewBox">
           <path :d="svgPath"></path>
         </svg>
@@ -29,6 +29,9 @@ export default {
     },
     url: {
       type: String
+    },
+    value:{
+      type: String
     }
   },
   computed: {
@@ -52,9 +55,12 @@ export default {
 }
 </script>
 <style lang="scss">
-
-
 .c-icon__svg{
-   color: beige;
+   fill: var(--color-button);
+   transition: 0.3s;
 }
+.c-icon__svg:hover{
+  fill: var(--color-secondary);
+}
+
 </style>

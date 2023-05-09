@@ -17,9 +17,9 @@
       </div>
     </template>
     <template #footer>
-      <CIcon iconName="facebook" url="https://es-es.facebook.com/"></CIcon>
-      <CIcon iconName="instagram" url="https://www.instagram.com/"></CIcon>
-      <CIcon iconName="github" url="https://github.com/"></CIcon>
+      <CIcon iconName="facebook" url="https://es-es.facebook.com/" value="_blank"></CIcon>
+      <CIcon iconName="instagram" url="https://www.instagram.com/" value="_blank"></CIcon>
+      <CIcon iconName="twitter" url="https://github.com/" value="_blank"></CIcon>
     </template>
   </l-main>
 </template>
@@ -100,6 +100,7 @@ export default {
   font-size: 2em;
   font-weight: 700;
   margin-bottom: 50px;
+  text-align: center;
 }
 .l-main__button {
   display: flex;
@@ -117,8 +118,19 @@ export default {
   margin-right: auto;
   margin-left: 10px;
 }
+
 .v-main__button--add {
   margin-left: auto;
   margin-right: 10px;
+}
+@media screen and (max-width: 400px) {
+  .v-main__button--out {
+    margin-right: auto;
+    margin-left: 70px;
+  }
+  .v-main__button--add{
+    margin-left:auto;
+    margin-right: 70px;
+  }
 }
 </style>
