@@ -90,22 +90,6 @@ export default {
   // font-weight: bold;
 }
 
-// .c-climber_info--container {
-//   margin-top: 5px;
-//   font-weight: bold;
-//   width: 30%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   align-self: center;
-//   &:hover {
-//     box-shadow: 0px 0px 4px 3px var(--color-secondary);
-//   }
-//   &.c-climber_info--link {
-//     color: var(--color-text-secondary);
-//   }
-// }
-
 .c-climber_info--link {
   margin: auto;
   text-decoration: none;
