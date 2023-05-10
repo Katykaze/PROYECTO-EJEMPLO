@@ -18,7 +18,7 @@
     </template>
     <template #footer>
       <CIcon iconName="facebook" url="https://es-es.facebook.com/" value="_blank"></CIcon>
-      <CIcon iconName="instagram" url="https://www.instagram.com/" value="_blank"></CIcon>
+      <CIcon iconName="instagram" url="https://www.instagram.com/" value="_blank" ></CIcon>
       <CIcon iconName="twitter" url="https://github.com/" value="_blank"></CIcon>
     </template>
   </l-main>

@@ -1,0 +1,28 @@
+$iconSizes: (
+  'small': 20,
+  'medium': 30,
+  'large': 40
+);
+//map-get($map, $key), donde $map es el mapa que se está consultando y
+//$key es la clave para la que se desea obtener el valor.
+
+.icon-small {
+  width: map-get($iconSizes, 'small') + px;
+  height: map-get($iconSizes, 'small') + px;
+}
+
+.icon-medium {
+  width: map-get($iconSizes, 'medium') + px;
+  height: map-get($iconSizes, 'medium') + px;
+}
+
+.icon-large {
+  width: map-get($iconSizes, 'large') + px;
+  height: map-get($iconSizes, 'large') + px;
+}
+@media only screen and (max-width: 300px) {
+  .icon- {
+    width: map-get($iconSizes, 'small') + px;
+    height: map-get($iconSizes, 'small') + px;
+  }
+}

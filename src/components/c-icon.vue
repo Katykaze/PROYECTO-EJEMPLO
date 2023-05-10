@@ -2,7 +2,7 @@
   <div class="c-icon">
     <div class="c-icon__wrapper" v-if="url">
       <a :href="url" :target="value">
-        <svg class="c-icon__svg" xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" :viewBox="viewBox">
+        <svg class="c-icon__svg icon-medium" xmlns="http://www.w3.org/2000/svg" :width="width" :height="height" :viewBox="viewBox">
           <path :d="svgPath"></path>
         </svg>
       </a>
