@@ -17,7 +17,7 @@
         <ul v-else>
           <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement text-l-medium">
             {{ achievement }}
-            <CButton @click="removeAchievement(index)"><CIcon iconName="paperbin" class="v-add__achievements--icon"></CIcon></CButton>
+            <CButton @click="removeAchievement(index)"><CIcon iconName="paperbin" class="v-add__achievements--icon" size="small"></CIcon></CButton>
           </li>
         </ul>
       </section>

@@ -1,9 +1,9 @@
 <template>
   <article class="v-login">
     <section class="v-login__info">
-      <span class="v-login__message-info" v-if="isSending">{{ publishedNamedPassword }}</span>
+      <span class="v-login__message-info text-l-medium" v-if="isSending">{{ publishedNamedPassword }}</span>
       <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
-      <span class="v-login__error" v-if="showErrorMessage">{{ errorMessage }}</span>
+      <span class="v-login__error text-l-medium" v-if="showErrorMessage">{{ errorMessage }}</span>
     </section>
 
     <section class="v-login__form">

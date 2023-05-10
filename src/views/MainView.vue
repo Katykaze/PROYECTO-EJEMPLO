@@ -17,9 +17,9 @@
       </div>
     </template>
     <template #footer>
-      <CIcon iconName="facebook" url="https://es-es.facebook.com/" value="_blank"></CIcon>
-      <CIcon iconName="instagram" url="https://www.instagram.com/" value="_blank" ></CIcon>
-      <CIcon iconName="twitter" url="https://github.com/" value="_blank"></CIcon>
+      <CIcon iconName="facebook" url="https://es-es.facebook.com/" value="_blank" size="medium"></CIcon>
+      <CIcon iconName="instagram" url="https://www.instagram.com/" value="_blank" size="medium"></CIcon>
+      <CIcon iconName="twitter" url="https://github.com/" value="_blank" size="medium"></CIcon>
     </template>
   </l-main>
 </template>
@@ -109,11 +109,6 @@ export default {
   margin-bottom: 50px;
   width: 100%;
 }
-@media screen and (max-width: 600px) {
-  .l-main__content {
-    font-size: 0.7em;
-  }
-}
 .v-main__button--out {
   margin-right: auto;
   margin-left: 10px;
@@ -123,7 +118,7 @@ export default {
   margin-left: auto;
   margin-right: 10px;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .v-main__button--out {
     margin-right: auto;
     margin-left: 70px;
