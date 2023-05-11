@@ -5,7 +5,7 @@
     </template>
     <template #main>
       <h2 v-if="error">error</h2>
-      <CClimber
+      <CClimber2
         v-for="climber in climbers"
         :key="climber.name"
         :src="climber"
@@ -17,8 +17,18 @@
       </div>
     </template>
     <template #footer>
-      <CIcon iconName="facebook" url="https://es-es.facebook.com/" value="_blank" size="medium"></CIcon>
-      <CIcon iconName="instagram" url="https://www.instagram.com/" value="_blank" size="medium"></CIcon>
+      <CIcon
+        iconName="facebook"
+        url="https://es-es.facebook.com/"
+        value="_blank"
+        size="medium"
+      ></CIcon>
+      <CIcon
+        iconName="instagram"
+        url="https://www.instagram.com/"
+        value="_blank"
+        size="medium"
+      ></CIcon>
       <CIcon iconName="twitter" url="https://github.com/" value="_blank" size="medium"></CIcon>
     </template>
   </l-main>
@@ -26,7 +36,8 @@
 
 <script>
 import LMain from '../layouts/l-main.vue'
-import CClimber from '../components/c-climber.vue'
+// import CClimber from '../components/c-climber.vue'
+import CClimber2 from '../components/c-climber2.vue'
 import CButton from '../components/c-button.vue'
 import CInput from '../components/c-input.vue'
 import CIcon from '../components/c-icon.vue'
@@ -38,7 +49,7 @@ export default {
   components: {
     LMain,
     CButton,
-    CClimber,
+    CClimber2,
     CInput,
     CIcon
   },
@@ -81,6 +92,7 @@ export default {
       try {
         const useClimberStore = climbersStore()
         this.climbers = await useClimberStore.fetchClimbers()
+        console.log(this.climbers)
         this.isPending = false
       } catch (e) {
         console.log(e)
@@ -123,8 +135,8 @@ export default {
     margin-right: auto;
     margin-left: 70px;
   }
-  .v-main__button--add{
-    margin-left:auto;
+  .v-main__button--add {
+    margin-left: auto;
     margin-right: 70px;
   }
 }

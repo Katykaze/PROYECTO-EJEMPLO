@@ -13,11 +13,19 @@
         <CButton @click="addAchievement()">Añadir</CButton>
       </section>
       <section class="v-add__achievements--list">
-        <p v-if="!achievements || achievements.length === 0" class="text-l-medium">No has añadido Logros</p>
+        <p v-if="!achievements || achievements.length === 0" class="text-l-medium">
+          No has añadido Logros
+        </p>
         <ul v-else>
-          <li v-for="(achievement, index) in achievements" :key="index" class="v-add__achievement text-l-medium">
+          <li
+            v-for="(achievement, index) in achievements"
+            :key="index"
+            class="v-add__achievement text-l-medium"
+          >
             {{ achievement }}
-            <CButton @click="removeAchievement(index)"><CIcon iconName="paperbin" class="v-add__achievements--icon" size="small"></CIcon></CButton>
+            <CButton @click="removeAchievement(index)"
+              ><CIcon iconName="paperbin" class="v-add__achievements--icon" size="small"></CIcon
+            ></CButton>
           </li>
         </ul>
       </section>
@@ -43,6 +51,7 @@ export default {
   },
   data() {
     return {
+      id: '',
       img: '',
       name: '',
       age: '',
@@ -159,10 +168,10 @@ export default {
   justify-content: center;
   gap: 10px;
 }
-.v-add__achievements--icon{
-  fill:var(--color-text-primary);
-  &:hover{
-    fill:var(--color-text-secondary)
+.v-add__achievements--icon {
+  fill: var(--color-text-primary);
+  &:hover {
+    fill: var(--color-text-secondary);
   }
 }
 </style>

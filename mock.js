@@ -5,6 +5,7 @@ const port = 8081
 
 const climbers = [
   {
+    id: '1',
     img: 'https://woguclimbing.com/wp-content/uploads/2017/06/alex-honnold-freerider-Jimmy-Chin-1024x539.jpg',
     name: 'Alex Honnold',
     age: '36',
@@ -19,6 +20,7 @@ const climbers = [
     link: 'http://www.alexhonnold.com/'
   },
   {
+    id:'2',
     img: 'https://www.deaventura.pe/blog/wp-content/uploads/2014/11/Lynn-en-Nose.jpg',
     name: 'Lynn Hill',
     age: '60',
@@ -33,6 +35,7 @@ const climbers = [
     link: 'https://lynnhillclimbing.com/'
   },
   {
+    id:'3',
     img: 'https://phantom-elmundo.unidadeditorial.es/db5769edebf93b0cdfb9feb050e3a7e2/crop/0x497/1146x1258/resize/746/f/jpg/assets/multimedia/imagenes/2020/07/29/15960458319949.jpg',
     name: 'Chris Sharma',
     age: '40',
@@ -47,6 +50,7 @@ const climbers = [
     link: ''
   },
   {
+    id:'4',
     img: 'https://www.lacrux.com/wp-content/uploads/2018/04/Warum-Adam-Ondra-Silence-mit-9c-bewertete-1024x444.jpg',
     name: 'Adam Ondra',
     age: '30',
@@ -61,6 +65,7 @@ const climbers = [
     link: 'https://www.adamondra.com/'
   },
   {
+    id:'5',
     img: 'https://woguclimbing.com/wp-content/uploads/2019/08/Janja-Garnbret-web-1024x795.jpg',
     name: 'Janja Garnbret',
     age: '22',
@@ -73,10 +78,11 @@ const climbers = [
     link: 'https://janja-garnbret.com/'
   },
   {
+    id:'6',
     img: 'https://ichef.bbci.co.uk/images/ic/640x360/p056zyfn.jpg',
     name: 'Margo Hayes',
     age: '30',
-    nationality: 'República Checa',
+    nationality: 'Estados Unidos',
     achievements: [],
     link: ''
   }

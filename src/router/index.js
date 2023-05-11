@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/MainView.vue')
     },
     {
+      path: '/modifyClimber/:id',
+      name: 'modifyClimber',
+      component: () => import('../views/ModifyClimberView.vue')
+    },
+    {
       path: '/formClimber',
       name: 'formClimber',
       component: () => import('../views/AddClimberView.vue')
@@ -26,7 +31,7 @@ const router = createRouter({
     }
   ]
 })
-const authRoutes = ['home', 'formClimber']
+const authRoutes = ['home', 'formClimber','modifyClimber']
 
 router.beforeEach((to, from, next) => {
   if (to.name === 'unkwnow') {
