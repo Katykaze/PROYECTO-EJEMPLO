@@ -38,7 +38,11 @@ export default {
   width: 100%;
   height: 80px;
   border: none;
-  background-image: var(--color-background-image);
+  background: transparent;
+  resize: none;
+  font-family: inherit;
+  color: inherit;
+  line-height: inherit;
 }
 .text-medium{
   

@@ -10,6 +10,7 @@
         :key="climber.name"
         :src="climber"
         :achievements="climber.achievements"
+        class="v-main__CClimber2"
       />
       <div class="l-main__button">
         <CButton @click="doLogout" class="v-main__button--out">Log Out</CButton>
@@ -130,6 +131,7 @@ export default {
   margin-left: auto;
   margin-right: 10px;
 }
+
 @media screen and (max-width: 500px) {
   .v-main__button--out {
     margin-right: auto;
@@ -139,5 +141,8 @@ export default {
     margin-left: auto;
     margin-right: 70px;
   }
+  .v-main__CClimber2{
+  text-align: center;
+}
 }
 </style>

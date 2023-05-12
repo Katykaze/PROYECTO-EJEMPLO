@@ -4,7 +4,7 @@
       <div class="l-main__header--tittle">Top Climbers</div>
     </template>
     <template #main>
-      <CClimber2 :src="climber" :achievements="climber.achievements"></CClimber2>
+      <CClimber2 :src="climber" :achievements="climber.achievements" :isEditable="editable" :isSending="isSending"></CClimber2>
       <CButton @click="goBack()">Atrás</CButton>
     </template>
   </l-main>
@@ -23,7 +23,15 @@ export default {
   },
   data() {
     return {
-      climber: []
+      climber: [],
+      editable:{
+        type:Boolean,
+        default:false
+      },
+      isSending:{
+        type:Boolean,
+        default:true
+      }
     }
   },
   methods: {
