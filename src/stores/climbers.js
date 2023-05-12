@@ -25,14 +25,8 @@ export const climbersStore = defineStore('climbers', {
     async addClimber(climber) {
       const method = 'POST'
       const url = '/climbers/new'
-      await this.fetchClimbers()
-      let lastId = this.getLastIdClimber()
-      let numberLastId=parseInt(lastId) + 1
-      console.log(numberLastId)
-      lastId = numberLastId.toString()
-      const newClimber = { id: lastId,...climber}
       return fetchStore()
-        .doRequest({ url, method, payload: newClimber })
+        .doRequest({ url, method, payload: climber })
         .then((res) => {
           this.climbers = res
           return res
@@ -41,11 +35,6 @@ export const climbersStore = defineStore('climbers', {
           console.log(error)
           return false
         })
-    },
-    getLastIdClimber() {     
-        const [lastClimber] = this.climbers.slice(-1)
-        console.log('ultimo escalador', JSON.stringify(lastClimber))
-        return lastClimber.id      
     },
 
     getClimberById(id) {

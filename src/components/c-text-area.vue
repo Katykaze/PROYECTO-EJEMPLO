@@ -44,7 +44,6 @@ export default {
   color: inherit;
   line-height: inherit;
 }
-.text-medium{
-  
+.text-medium {
 }
 </style>

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-mutating-props -->
 <template>
   <main class="c-climber">
     <article class="c-climber__wrapper">
@@ -24,7 +25,7 @@
         <div class="c-climber_info--titleAch">
           <strong>Logros:</strong>
         </div>
-        <div v-if="achievements && achievements.length !== 0 && (!isSending)">
+        <div v-if="achievements && achievements.length !== 0 && !isSending">
           <ul
             class="c-climber_info--achievements"
             v-for="(achievement, index) in achievements"
@@ -41,9 +42,7 @@
           target="_blank"
           >Más Información</a
         >
-        <CButton @click="editClimber(src.id)" :isSending="isSending">{{
-          isSending ? 'Enviar' : 'Editar Escalador'
-        }}</CButton>
+        <slot name="button"></slot>
       </section>
     </article>
   </main>
@@ -51,10 +50,9 @@
 
 <script>
 import CTextarea from './c-text-area.vue'
-import CButton from './c-button.vue'
 export default {
   name: 'CClimber2',
-  components: { CTextarea, CButton },
+  components: { CTextarea },
   props: {
     src: {
       type: Object,
@@ -65,19 +63,14 @@ export default {
       required: false
     },
     isEditable: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     isSending: {
       type: Boolean,
       default: false
     }
   },
-  methods: {
-    editClimber(id) {
-      this.$router.push({ name: 'modifyClimber', params: { id } })
-    }
-  }
+  methods: {}
 }
 </script>
 

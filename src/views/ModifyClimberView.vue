@@ -4,7 +4,11 @@
       <div class="l-main__header--tittle">Top Climbers</div>
     </template>
     <template #main>
-      <CClimber2 :src="climber" :achievements="climber.achievements" :isEditable="editable" :isSending="isSending"></CClimber2>
+      <CClimber2 :src="climber" :achievements="climber.achievements">
+        <template #button>
+          <CButton @click="editClimber(climber.id)"> Enviar </CButton>
+        </template>
+      </CClimber2>
       <CButton @click="goBack()">Atrás</CButton>
     </template>
   </l-main>
@@ -23,20 +27,16 @@ export default {
   },
   data() {
     return {
-      climber: [],
-      editable:{
-        type:Boolean,
-        default:false
-      },
-      isSending:{
-        type:Boolean,
-        default:true
-      }
+      climber: []
     }
   },
   methods: {
     goBack() {
       this.$router.go(-1)
+    },
+
+    editClimber(id) {
+      console.log(id)
     }
   },
   async created() {

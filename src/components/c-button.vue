@@ -7,13 +7,7 @@
 <script>
 export default {
   name: 'CButton',
-  inheritAttrs: false,
-  props: {
-    isSending: {
-      type: Boolean,
-      default: false
-    }
-  }
+  inheritAttrs: false
 }
 </script>
 <style lang="scss">

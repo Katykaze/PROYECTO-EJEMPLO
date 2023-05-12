@@ -11,7 +11,11 @@
         :src="climber"
         :achievements="climber.achievements"
         class="v-main__CClimber2"
-      />
+      >
+        <template #button>
+          <CButton @click="editClimber(climber.id)">Editar escalador </CButton>
+        </template>
+      </CClimber2>
       <div class="l-main__button">
         <CButton @click="doLogout" class="v-main__button--out">Log Out</CButton>
         <CButton @click="goNext()" class="v-main__button--add">Añadir Escalador</CButton>
@@ -67,6 +71,10 @@ export default {
   methods: {
     goNext() {
       this.$router.push({ name: 'formClimber' })
+    },
+
+    editClimber(id) {
+      this.$router.push({ name: 'modifyClimber', params: { id } })
     },
     async doSubmit() {
       try {
@@ -141,8 +149,8 @@ export default {
     margin-left: auto;
     margin-right: 70px;
   }
-  .v-main__CClimber2{
-  text-align: center;
-}
+  .v-main__CClimber2 {
+    text-align: center;
+  }
 }
 </style>
