@@ -22,7 +22,7 @@ export const climbersStore = defineStore('climbers', {
         })
     },
 
-    async addClimber(climber) {
+    addClimber(climber) {
       const method = 'POST'
       const url = '/climbers/new'
       return fetchStore()
@@ -39,6 +39,20 @@ export const climbersStore = defineStore('climbers', {
 
     getClimberById(id) {
       return this.climbers.find((climber) => climber.id === id)
+    },
+    modifyClimber(climber){
+      const method = 'PUT'
+      const url='/climbers/mod'
+      return fetchStore()
+      .doRequest({url,method,payload: climber})
+      .then((res)=>{
+        this.climbers = res 
+        return res
+      })
+      .catch((error)=>{
+        console.log(error)
+        return false
+      })
     }
   }
 })

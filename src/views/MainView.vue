@@ -13,7 +13,7 @@
         class="v-main__CClimber2"
       >
         <template #button>
-          <CButton @click="editClimber(climber.id)">Editar escalador </CButton>
+          <CButton @click="editClimber(climber.id)" class="v-main__button--edit">Editar escalador </CButton>
         </template>
       </CClimber2>
       <div class="l-main__button">
@@ -139,7 +139,9 @@ export default {
   margin-left: auto;
   margin-right: 10px;
 }
-
+.v-main__button--edit{
+  justify-content: center;
+}
 @media screen and (max-width: 500px) {
   .v-main__button--out {
     margin-right: auto;
@@ -149,8 +151,16 @@ export default {
     margin-left: auto;
     margin-right: 70px;
   }
-  .v-main__CClimber2 {
+  .v-main__CClimber2{
+    display: flex;
     text-align: center;
+    align-items: center;
   }
+  
 }
+.v-main__CClimber2{
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
 </style>

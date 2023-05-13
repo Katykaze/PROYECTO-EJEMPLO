@@ -143,3 +143,12 @@ app.post('/climbers/new', (req, res) => {
 app.get('/climbers/getAll', (req, res) => {
   res.send(climbers)
 })
+
+app.put('/climbers/mod',(req,res)=>{
+  const climber = req.body
+  console.log('climber: ', climber)
+  //llamar a la funcion de getid
+  const index = climbers.findIndex((climber)=> climber.id)
+  this.climbers[index]=climber
+  res.send(climbers)
+})

@@ -4,7 +4,7 @@
       <div class="l-main__header--tittle">Top Climbers</div>
     </template>
     <template #main>
-      <CClimber2 :src="climber" :achievements="climber.achievements">
+      <CClimber2 :src="climber" :achievements="climber.achievements" :isEditable="!isEditable">
         <template #button>
           <CButton @click="editClimber(climber.id)"> Enviar </CButton>
         </template>
@@ -28,6 +28,11 @@ export default {
   data() {
     return {
       climber: []
+    }
+  },
+  props:{
+    isEditable:{
+      type:Boolean
     }
   },
   methods: {

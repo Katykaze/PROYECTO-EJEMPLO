@@ -3,6 +3,7 @@
     class="c-text-area"
     :value="modelValue"
     :readonly="!editable"
+    :placeholder="placeholder"
     @input="$emit('update:modelValue', $event.target.value)"
   ></textarea>
 </template>
@@ -19,6 +20,9 @@ export default {
     size: {
       type: String,
       default: 'medium'
+    },
+    placeholder:{
+      type:String
     }
   },
   computed: {

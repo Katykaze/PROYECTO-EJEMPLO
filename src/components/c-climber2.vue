@@ -6,42 +6,21 @@
         <img :src="src.img" alt="foto de escalador" />
       </section>
       <section class="c-climber__info">
-        <p>{{ src.id }}</p>
-        <CTextarea
-          class="c-climber__info--name text-xxl-bold"
-          v-model="src.name"
-          :editable="isEditable"
-        ></CTextarea>
-        <CTextarea
-          class="c-climber__info--age text-l-medium"
-          v-model="src.age"
-          :editable="isEditable"
-        ></CTextarea>
-        <CTextarea
-          class="c-climber__info--nationality text-l-medium"
-          v-model="src.nationality"
-          :editable="isEditable"
-        ></CTextarea>
+        <!-- <p>{{ src.id }}</p> -->
+        <CTextarea class="c-climber__info--name text-xxl-bold" v-model="src.name" :editable="isEditable"></CTextarea>
+        <CTextarea class="c-climber__info--age text-l-medium" v-model="src.age" :editable="isEditable"></CTextarea>
+        <CTextarea class="c-climber__info--nationality text-l-medium" v-model="src.nationality" :editable="isEditable">
+        </CTextarea>
         <div class="c-climber_info--titleAch">
           <strong>Logros:</strong>
         </div>
-        <div v-if="achievements && achievements.length !== 0 && !isSending">
-          <ul
-            class="c-climber_info--achievements"
-            v-for="(achievement, index) in achievements"
-            :key="index"
-          >
-            <li class="text-l-medium">{{ achievement }}</li>
-          </ul>
+        <div v-if="achievements && achievements.length !== 0">
+          <CTextarea class="c-climber_info--achievements text-l-medium" v-for="(achievement, index) in achievements"
+            :key="index" v-model="achievements[index]" :editable="isEditable"></CTextarea>
         </div>
         <p v-else class="text-l-medium">No hay Datos disponibles</p>
-        <a
-          class="c-climber_info--link text-xl-bold"
-          v-if="src.link"
-          v-bind:href="src.link"
-          target="_blank"
-          >Más Información</a
-        >
+        <a class="c-climber_info--link text-xl-bold" v-if="src.link" v-bind:href="src.link" target="_blank">Más
+          Información</a>
         <slot name="button"></slot>
       </section>
     </article>
@@ -74,7 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .c-climber__wrapper {
   display: flex;
   gap: 60px;
@@ -99,12 +78,14 @@ export default {
   gap: 20px;
   flex: 2;
 }
+
 .c-climber__info:hover {
   border: var(--color-secondary);
   background-color: var(--color-light-secondary);
   opacity: 0.38;
   transition: background 0.3s, opacity 0.3s;
   color: var(--color-text-secondary);
+
   &.c-climber_info--link {
     // color: var(--color-text-secondary);
     background-color: var(--color-text-secondary);
@@ -121,6 +102,7 @@ export default {
   margin: auto;
   text-decoration: none;
   color: var(--color-text-primary);
+
   &:hover {
     background-color: var(--color-text-secondary);
     border-radius: 5px;
@@ -132,10 +114,12 @@ export default {
   .c-climber__wrapper {
     flex-direction: column;
   }
+
   .c-climber__img {
     display: block;
     margin: 0 auto;
   }
+
   .c-climber__info {
     text-align: center;
     justify-content: center;
