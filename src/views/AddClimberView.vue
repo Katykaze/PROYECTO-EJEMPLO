@@ -1,5 +1,6 @@
 <template>
   <div class="v-add__principal-container">
+    <CMessage class="v-add__message text-l-medium" v-if="isSending"> Escalador Añadido </CMessage>
     <article class="v-add">
       <section class="v-add__info">
         <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
@@ -40,6 +41,7 @@
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
 import CIcon from '../components/c-icon.vue'
+import CMessage from '../components/c-message.vue'
 import { climbersStore } from '../stores/climbers'
 
 export default {
@@ -47,7 +49,8 @@ export default {
   components: {
     CInput,
     CButton,
-    CIcon
+    CIcon,
+    CMessage
   },
   data() {
     return {
@@ -58,7 +61,8 @@ export default {
       nationality: '',
       achievement: '',
       achievements: [],
-      climbers: []
+      climbers: [],
+      isSending:false
     }
   },
   methods: {
@@ -79,6 +83,7 @@ export default {
         //solo funciona si coincide
         //https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs
         Object.assign(this.$data, this.$options.data.apply(this))
+        this.isSending=true
       } catch (e) {
         console.log(e)
       }
@@ -102,8 +107,13 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.v-add__message{
+  margin-bottom: 20px;
+
 }
 .v-add {
   display: flex;
@@ -117,6 +127,7 @@ export default {
   height: 50%;
   overflow-y: auto;
   overflow-x: hidden;
+  
 }
 .v-add__info {
   display: grid;

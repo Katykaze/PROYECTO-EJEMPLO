@@ -79,11 +79,11 @@ const climbers = [
   },
   {
     id: '6',
-    img: 'https://ichef.bbci.co.uk/images/ic/640x360/p056zyfn.jpg',
+    img: 'https://woguclimbing.com/wp-content/uploads/2018/10/Margo-Hayes-8c-Oliana_web-1024x641.jpg',
     name: 'Margo Hayes',
     age: '30',
     nationality: 'Estados Unidos',
-    achievements: [],
+    achievements: ['Primera mujer escaladora en hacer 9a+'],
     link: ''
   }
 ]

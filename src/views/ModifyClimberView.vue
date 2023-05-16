@@ -1,15 +1,18 @@
 <template>
   <l-main>
     <template #header>
-      <div class="l-main__header--tittle">Top Climbers</div>
+      <div class="v-modifyClimber__header--tittle">Top Climbers</div>
     </template>
     <template #main>
+      <CMessage class="v-modifyClimber__message text-l-medium" v-if="isSending">Escalador Actualizado</CMessage>
       <CClimber2 :src="climber" :achievements="climber.achievements" :isEditable="!isEditable">
         <template #button>
-          <CButton @click="editClimber(climber.id)"> Enviar </CButton>
+          <CButton @click="editClimber(climber.id)" class="v-modifyClimber__button--send">
+            Actualizar escalador
+          </CButton>
         </template>
       </CClimber2>
-      <CButton @click="goBack()">Atrás</CButton>
+      <CButton @click="goBack()" class="v-modifyClimber__button--back">Atrás</CButton>
     </template>
   </l-main>
 </template>
@@ -17,23 +20,21 @@
 import CButton from '../components/c-button.vue'
 import LMain from '../layouts/l-main.vue'
 import CClimber2 from '../components/c-climber2.vue'
+import CMessage from '../components/c-message.vue'
 import { climbersStore } from '../stores/climbers'
 export default {
   name: 'ModifyClimber',
   components: {
     CClimber2,
     LMain,
-    CButton
+    CButton,
+    CMessage
   },
   data() {
     return {
-      // img:'',
-      // name:'',
-      // age:'',
-      // nationality:'',
-      // achievement:'',
       achievements: [],
-      climber: []
+      climber: [],
+      isSending:false
     }
   },
   props: {
@@ -53,8 +54,8 @@ export default {
         console.log(updatedClimber)
         const useClimberStore = climbersStore()
         const response = await useClimberStore.modifyClimber(updatedClimber)
-        console.log('response '+ response.map(climber => climber.name))
-        
+        this.isSending=true
+        //console.log('response ' + response.map((climber) => climber.name))
       } catch (e) {
         console.log(e)
       }
@@ -69,3 +70,30 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.v-modifyClimber__header--tittle {
+  margin-top: 50px;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.v-modifyClimber__message{
+  margin: auto;
+}
+.v-modifyClimber__button--send {
+  margin-left: auto;
+  margin-right: auto;
+  transition: font-size 0.7s ease;
+  &:hover {
+    background-color: var(--color-text-primary);
+    font-size: 15px;
+  }
+}
+.v-modifyClimber__button--back {
+ margin-left: auto;
+ margin-right: auto;
+ margin-bottom: 30px;
+ font-size: 17px;
+}
+</style>

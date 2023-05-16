@@ -125,8 +125,6 @@ export default {
 }
 .l-main__button {
   display: flex;
-  // justify-content: center;
-  // align-items: center;
   margin-bottom: 50px;
   width: 100%;
 }
@@ -140,7 +138,14 @@ export default {
   margin-right: 10px;
 }
 .v-main__button--edit{
-  justify-content: center;
+  margin-left:auto ;
+  margin-right:auto ;
+  margin-bottom: 5px;
+  transition: font-size 0.7s ease;
+  &:hover{
+    background-color: var(--color-text-primary);
+    font-size: 15px;
+  }
 }
 @media screen and (max-width: 500px) {
   .v-main__button--out {
@@ -162,5 +167,6 @@ export default {
     display: flex;
     text-align: center;
     align-items: center;
+    
   }
 </style>

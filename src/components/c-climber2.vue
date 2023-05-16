@@ -58,6 +58,7 @@ export default {
   display: flex;
   gap: 60px;
   justify-content: space-between;
+  width: 100%;
 }
 
 .c-climber__img {
@@ -85,28 +86,20 @@ export default {
   opacity: 0.38;
   transition: background 0.3s, opacity 0.3s;
   color: var(--color-text-secondary);
-
-  &.c-climber_info--link {
-    // color: var(--color-text-secondary);
-    background-color: var(--color-text-secondary);
-  }
 }
 
 .c-climber_info--titleAch {
   margin-top: 20px;
-  // font-size: 36px;
-  // font-weight: bold;
 }
 
 .c-climber_info--link {
   margin: auto;
   text-decoration: none;
-  color: var(--color-text-primary);
+  color: #00288F;
+  transition: font-size 0.7s ease;
 
   &:hover {
-    background-color: var(--color-text-secondary);
-    border-radius: 5px;
-    padding: 2px;
+    font-size: 1.5em;
   }
 }
 
@@ -124,7 +117,6 @@ export default {
     text-align: center;
     justify-content: center;
     align-items: center;
-    // font-size: 1em;
   }
 }
 </style>

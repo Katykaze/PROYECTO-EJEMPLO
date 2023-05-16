@@ -1,13 +1,17 @@
 <template>
   <article class="v-login">
     <section class="v-login__info">
-      <span class="v-login__message-info text-l-medium" v-if="isSending">{{ publishedNamedPassword }}</span>
+      <CMessage class="v-login__message-info text-l-medium" v-if="isSending">{{
+        publishedNamedPassword
+      }}</CMessage>
       <!-- <span class="v-login__user" v-if="correctUser">{{ userLog }}</span> -->
-      <span class="v-login__error text-l-medium" v-if="showErrorMessage">{{ errorMessage }}</span>
+      <CMessage class="v-login__error text-l-medium" v-if="showErrorMessage">{{
+        errorMessage
+      }}</CMessage>
     </section>
 
     <section class="v-login__form">
-      <CInput v-model:src="username" placeholder="Introduce tu nombre" />
+      <CInput v-model:src="username" placeholder="Introduce tu nombre" class="text-s-book" />
       <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
 
       <CButton :onClick="submitData" :isSending="isSending">{{
@@ -19,6 +23,7 @@
 <script>
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
+import CMessage from '../components/c-message.vue'
 import { userStore } from '../stores/user'
 //porque en ese archivo pone export const en lugar de export default
 
@@ -26,7 +31,8 @@ export default {
   name: 'LoginView',
   components: {
     CInput,
-    CButton
+    CButton,
+    CMessage
   },
   data() {
     return {
