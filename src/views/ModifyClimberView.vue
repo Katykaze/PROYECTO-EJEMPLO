@@ -27,12 +27,18 @@ export default {
   },
   data() {
     return {
+      img:'',
+      name:'',
+      age:'',
+      nationality:'',
+      achievement:'',
+      achievements:[],
       climber: []
     }
   },
-  props:{
-    isEditable:{
-      type:Boolean
+  props: {
+    isEditable: {
+      type: Boolean
     }
   },
   methods: {
@@ -40,8 +46,22 @@ export default {
       this.$router.go(-1)
     },
 
-    editClimber(id) {
+    async editClimber(id) {
       console.log(id)
+      try {
+        const updatedClimber = {
+          img: this.img,
+          name: this.name,
+          age: this.age,
+          nationality: this.nationality,
+          achievement: this.achievement,
+          achievements: this.achievements
+        }
+        const useClimberStore = climbersStore()
+        this.climber = await useClimberStore.modifyClimber(updatedClimber)
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   async created() {

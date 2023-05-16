@@ -144,11 +144,12 @@ app.get('/climbers/getAll', (req, res) => {
   res.send(climbers)
 })
 
-app.put('/climbers/mod',(req,res)=>{
-  const climber = req.body
-  console.log('climber: ', climber)
-  //llamar a la funcion de getid
-  const index = climbers.findIndex((climber)=> climber.id)
-  this.climbers[index]=climber
+app.put('/climbers/mod', (req, res) => {
+  const updatedClimber = req.body
+  console.log('climber: ', updatedClimber)
+  const index = climbers.findIndex((climber) => climber.id === updatedClimber)
+  if (index !== -1) {
+    this.climbers[index] = updatedClimber
+  }
   res.send(climbers)
 })
