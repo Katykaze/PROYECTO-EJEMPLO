@@ -146,12 +146,9 @@ app.get('/climbers/getAll', (req, res) => {
 
 app.put('/climbers/mod', (req, res) => {
   const updatedClimber = req.body
-  console.log('updatedClimber: ', updatedClimber)
-  let index = climbers.findIndex((climber) => climber.id === updatedClimber)
-  console.log(index)
+  let index = climbers.findIndex((climber) => climber.id === updatedClimber.id)
   if (index !== -1) {
-    this.climbers[index] = updatedClimber
-    console.log('archivo mock enviando con escalador actualizado '+climbers)
+    climbers[index] = { ...updatedClimber }
   }
   res.send(climbers)
 })
