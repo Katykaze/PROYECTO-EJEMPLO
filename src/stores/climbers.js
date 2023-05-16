@@ -40,19 +40,21 @@ export const climbersStore = defineStore('climbers', {
     getClimberById(id) {
       return this.climbers.find((climber) => climber.id === id)
     },
-    modifyClimber(updatedClimber){
+    async modifyClimber(updatedClimber) {
+      console.log('modifyClimber called')
+      console.log('updatedClimber:', updatedClimber)
       const method = 'PUT'
-      const url='/climbers/mod'
+      const url = '/climbers/mod'
       return fetchStore()
-      .doRequest({url,method,payload: updatedClimber})
-      .then((res)=>{
-        this.climbers = res 
-        return res
-      })
-      .catch((error)=>{
-        console.log(error)
-        return false
-      })
+        .doRequest({ url, method, payload: updatedClimber })
+        .then((res) => {
+          this.climbers = res
+          return res
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
     }
   }
 })

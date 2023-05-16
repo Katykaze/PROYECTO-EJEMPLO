@@ -27,12 +27,12 @@ export default {
   },
   data() {
     return {
-      img:'',
-      name:'',
-      age:'',
-      nationality:'',
-      achievement:'',
-      achievements:[],
+      // img:'',
+      // name:'',
+      // age:'',
+      // nationality:'',
+      // achievement:'',
+      achievements: [],
       climber: []
     }
   },
@@ -49,16 +49,12 @@ export default {
     async editClimber(id) {
       console.log(id)
       try {
-        const updatedClimber = {
-          img: this.img,
-          name: this.name,
-          age: this.age,
-          nationality: this.nationality,
-          achievement: this.achievement,
-          achievements: this.achievements
-        }
+        const updatedClimber = { ...this.climber }
+        console.log(updatedClimber)
         const useClimberStore = climbersStore()
-        this.climber = await useClimberStore.modifyClimber(updatedClimber)
+        const response = await useClimberStore.modifyClimber(updatedClimber)
+        console.log('response '+ response.map(climber => climber.name))
+        
       } catch (e) {
         console.log(e)
       }
