@@ -84,10 +84,11 @@ export default {
 .v-modifyClimber__button--send {
   margin-left: auto;
   margin-right: auto;
-  transition: font-size 0.7s ease;
+  margin-bottom: 10px;
+  transition: transform 0.7s ease;
   &:hover {
     background-color: var(--color-text-primary);
-    font-size: 15px;
+    transform: scale(1.2);
   }
 }
 .v-modifyClimber__button--back {

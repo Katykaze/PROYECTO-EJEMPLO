@@ -11,8 +11,8 @@
     </section>
 
     <section class="v-login__form">
-      <CInput v-model:src="username" placeholder="Introduce tu nombre" class="text-s-book" />
-      <CInput v-model:src="password" placeholder="Introduce contraseña" type="password" />
+      <CInput v-model:src="username" placeholder="Introduce tu nombre" class="text-m-book" />
+      <CInput v-model:src="password" placeholder="Introduce contraseña" class="text-m-book" type="password" />
 
       <CButton :onClick="submitData" :isSending="isSending">{{
         isSending ? 'Sending' : 'Send'

@@ -1,16 +1,16 @@
 <template>
   <div class="v-add__principal-container">
-    <CMessage class="v-add__message text-l-medium" v-if="isSending"> Escalador Añadido </CMessage>
+    <CMessage v-if="showMessage" class="v-add__message text-l-medium" >{{ message }}</CMessage>
     <article class="v-add">
       <section class="v-add__info">
-        <CInput v-model:src="img" placeholder="Introduce url de imagen"></CInput>
-        <CInput v-model:src="name" placeholder="Introduce nombre"></CInput>
-        <CInput v-model:src="age" placeholder="Introduce  edad"></CInput>
-        <CInput v-model:src="nationality" placeholder="Introduce nacionalidad"></CInput>
+        <CInput v-model:src="img" placeholder="Introduce url de imagen" class="text-m-book"></CInput>
+        <CInput v-model:src="name" placeholder="Introduce nombre" class="text-m-book"></CInput>
+        <CInput v-model:src="age" placeholder="Introduce  edad" class="text-m-book"></CInput>
+        <CInput v-model:src="nationality" placeholder="Introduce nacionalidad" class="text-m-book"></CInput>
       </section>
       <section class="v-add__achievements">
         <p class="v-add__pharagraph text-l-medium">Añade Logros del escalador</p>
-        <CInput v-model:src="achievement" placeholder="Introduce Logro"></CInput>
+        <CInput v-model:src="achievement" placeholder="Introduce Logro" class="text-m-book"></CInput>
         <CButton @click="addAchievement()">Añadir</CButton>
       </section>
       <section class="v-add__achievements--list">
@@ -62,12 +62,23 @@ export default {
       achievement: '',
       achievements: [],
       climbers: [],
-      isSending:false
+      isSending:false,
+      message:''
     }
+  },
+  computed:{
+    showMessage(){
+      return this.message !== ''
+    }
+
   },
   methods: {
     async doSubmit() {
+      if(this.name === ''){
+        return this.message='Por favor rellene al menos el campo nombre'
+      }
       try {
+        
         const climber = {
           img: this.img,
           name: this.name,
@@ -84,6 +95,7 @@ export default {
         //https://stackoverflow.com/questions/35604987/is-there-a-proper-way-of-resetting-a-components-initial-data-in-vuejs
         Object.assign(this.$data, this.$options.data.apply(this))
         this.isSending=true
+        this.message='Escalador Añadido'
       } catch (e) {
         console.log(e)
       }

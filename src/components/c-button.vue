@@ -1,5 +1,5 @@
 <template>
-  <button class="my-button text-xs-thin" v-bind="$attrs"><slot></slot></button>
+  <button class="my-button text-s-book" v-bind="$attrs"><slot></slot></button>
 </template>
 
 <!-- {{ isSending ? 'Sending' : defaultString }} -->
@@ -16,8 +16,8 @@ export default {
   color: var(--color-text-primary);
   font-family: var(--font-family-primary);
   padding: 10px 20px;
-  min-width: 60px;
-  max-width: 100px;
+  min-width: 20px;
+  max-width: 120px;
   background-color: var(--color-button);
   border-radius: 5px;
   cursor: pointer;

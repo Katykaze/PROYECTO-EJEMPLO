@@ -40,7 +40,7 @@
         </div>
         <p v-else class="text-l-medium">No hay Datos disponibles</p>
         <a
-          class="c-climber_info--link text-xl-bold"
+          class="c-climber_info--link text-l-bold"
           v-if="src.link"
           v-bind:href="src.link"
           target="_blank"
@@ -90,7 +90,6 @@ export default {
   width: 60%;
   height: 40%;
   flex: 1;
-  border: 2px solid white;
   img {
     width: 100%;
     height: 100%;
@@ -121,10 +120,10 @@ export default {
   margin: auto;
   text-decoration: none;
   color: #00288f;
-  transition: font-size 0.7s ease;
+  transition: transform 0.7s ease;
 
   &:hover {
-    font-size: 1.5em;
+    transform: scale(1.2);
   }
 }
 

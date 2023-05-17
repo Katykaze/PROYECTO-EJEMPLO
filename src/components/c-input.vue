@@ -41,7 +41,7 @@ export default {
 }
 .c-input__input::placeholder {
   color: var(--color-text-primary);
-  font-size: 1.2em;
+  // font-size: 1.2em;
   text-align: center;
 }
 .c-input__input:hover {

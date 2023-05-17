@@ -141,11 +141,11 @@ export default {
 .v-main__button--edit {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5px;
-  transition: font-size 0.7s ease;
+  margin-bottom: 10px;
+  transition: transform 0.7s ease;
   &:hover {
     background-color: var(--color-text-primary);
-    font-size: 15px;
+    transform: scale(1.2);
   }
 }
 @media screen and (max-width: 500px) {

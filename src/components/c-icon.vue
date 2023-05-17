@@ -93,7 +93,7 @@ export default {
 }
 
 .icon-medium {
-  transform: scale(1);
+  transform: scale(1.2);
 }
 
 .icon-large {
