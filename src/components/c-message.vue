@@ -1,15 +1,25 @@
 <template>
-  <p class="c-message__p"><slot></slot></p>
+  <p class="c-message__p" @animationend="($event) => $event.target.classList.remove('animated')">
+    <slot class="c-message__slot"></slot>
+  </p>
 </template>
 <script>
 export default {
-  name: 'CMessage'
+  name: 'CMessage',
+
+  mounted() {
+    const text = document.querySelector('.c-message__p')
+    text.classList.add('animated')
+  },
+
+  updated() {
+    const text = document.querySelector('.c-message__p')
+    text.classList.add('animated')
+  }
 }
 </script>
 <style lang="scss">
-.c-message__p {
-  opacity: 0;
-  transition: opacity 0.7s ease-in-out;
+.animated {
   animation: fade-in 0.7s forwards;
 }
 
