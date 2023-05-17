@@ -10,10 +10,11 @@
         :key="climber.name"
         :src="climber"
         :achievements="climber.achievements"
-        class="v-main__CClimber2"
       >
         <template #button>
-          <CButton @click="editClimber(climber.id)" class="v-main__button--edit">Editar escalador </CButton>
+          <CButton @click="editClimber(climber.id)" class="v-main__button--edit"
+            >Editar escalador
+          </CButton>
         </template>
       </CClimber2>
       <div class="l-main__button">
@@ -137,12 +138,12 @@ export default {
   margin-left: auto;
   margin-right: 10px;
 }
-.v-main__button--edit{
-  margin-left:auto ;
-  margin-right:auto ;
+.v-main__button--edit {
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 5px;
   transition: font-size 0.7s ease;
-  &:hover{
+  &:hover {
     background-color: var(--color-text-primary);
     font-size: 15px;
   }
@@ -156,17 +157,5 @@ export default {
     margin-left: auto;
     margin-right: 70px;
   }
-  .v-main__CClimber2{
-    display: flex;
-    text-align: center;
-    align-items: center;
-  }
-  
 }
-.v-main__CClimber2{
-    display: flex;
-    text-align: center;
-    align-items: center;
-    
-  }
 </style>

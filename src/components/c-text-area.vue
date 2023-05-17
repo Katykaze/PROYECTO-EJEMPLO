@@ -21,8 +21,8 @@ export default {
       type: String,
       default: 'medium'
     },
-    placeholder:{
-      type:String
+    placeholder: {
+      type: String
     }
   },
   computed: {
@@ -47,7 +47,5 @@ export default {
   font-family: inherit;
   color: inherit;
   line-height: inherit;
-}
-.text-medium {
 }
 </style>

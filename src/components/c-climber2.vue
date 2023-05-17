@@ -7,20 +7,45 @@
       </section>
       <section class="c-climber__info">
         <!-- <p>{{ src.id }}</p> -->
-        <CTextarea class="c-climber__info--name text-xxl-bold" v-model="src.name" :editable="isEditable"></CTextarea>
-        <CTextarea class="c-climber__info--age text-l-medium" v-model="src.age" :editable="isEditable"></CTextarea>
-        <CTextarea class="c-climber__info--nationality text-l-medium" v-model="src.nationality" :editable="isEditable">
-        </CTextarea>
+        <div class="c-climber__area--wrapper">
+          <CTextarea
+            class="c-climber__area--info text-xxl-bold"
+            v-model="src.name"
+            :editable="isEditable"
+          ></CTextarea>
+          <CTextarea
+            class="c-climber__area--info text-l-medium"
+            v-model="src.age"
+            :editable="isEditable"
+          ></CTextarea>
+          <CTextarea
+            class="c-climber__area--info text-l-medium"
+            v-model="src.nationality"
+            :editable="isEditable"
+          >
+          </CTextarea>
+        </div>
+
         <div class="c-climber_info--titleAch">
           <strong>Logros:</strong>
         </div>
-        <div v-if="achievements && achievements.length !== 0">
-          <CTextarea class="c-climber_info--achievements text-l-medium" v-for="(achievement, index) in achievements"
-            :key="index" v-model="achievements[index]" :editable="isEditable"></CTextarea>
+        <div v-if="achievements && achievements.length !== 0" class="c-climber__area--wrapper">
+          <CTextarea
+            class="c-climber__area--info text-l-medium"
+            v-for="(achievement, index) in achievements"
+            :key="index"
+            v-model="achievements[index]"
+            :editable="isEditable"
+          ></CTextarea>
         </div>
         <p v-else class="text-l-medium">No hay Datos disponibles</p>
-        <a class="c-climber_info--link text-xl-bold" v-if="src.link" v-bind:href="src.link" target="_blank">Más
-          Información</a>
+        <a
+          class="c-climber_info--link text-xl-bold"
+          v-if="src.link"
+          v-bind:href="src.link"
+          target="_blank"
+          >Más Información</a
+        >
         <slot name="button"></slot>
       </section>
     </article>
@@ -62,10 +87,10 @@ export default {
 }
 
 .c-climber__img {
-  width: 500px;
-  height: 400px;
+  width: 60%;
+  height: 40%;
   flex: 1;
-
+  border: 2px solid white;
   img {
     width: 100%;
     height: 100%;
@@ -95,7 +120,7 @@ export default {
 .c-climber_info--link {
   margin: auto;
   text-decoration: none;
-  color: #00288F;
+  color: #00288f;
   transition: font-size 0.7s ease;
 
   &:hover {
@@ -117,6 +142,14 @@ export default {
     text-align: center;
     justify-content: center;
     align-items: center;
+  }
+
+  .c-climber__area--wrapper {
+    width: 80%;
+  }
+
+  .c-climber__area--info {
+    text-align: center;
   }
 }
 </style>
