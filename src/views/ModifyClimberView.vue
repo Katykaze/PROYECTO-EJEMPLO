@@ -94,6 +94,6 @@ export default {
  margin-left: auto;
  margin-right: auto;
  margin-bottom: 30px;
- font-size: 17px;
+//  font-size: 15px;
 }
 </style>
