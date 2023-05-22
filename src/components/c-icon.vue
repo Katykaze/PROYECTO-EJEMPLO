@@ -17,6 +17,7 @@
 
     <div class="c-icon_wrapper" v-else>
       <svg
+        class="c-icon__svg"
         xmlns="http://www.w3.org/2000/svg"
         :class="additionalClasses"
         :width="width"
@@ -46,8 +47,8 @@ export default {
     value: {
       type: String
     },
-    size:{
-      type:String,
+    size: {
+      type: String,
       default: 'small'
     }
   },
@@ -99,12 +100,12 @@ export default {
 .icon-large {
   transform: scale(1.5);
 }
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
   .icon-medium {
     transform: scale(0.8);
   }
   .icon-small {
-  transform: scale(0.5);
-}
+    transform: scale(0.5);
+  }
 }
 </style>

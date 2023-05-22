@@ -1,13 +1,23 @@
 <template>
   <l-main>
     <template #header>
-      <div class="l-main__header--tittle">Top Climbers</div>
+      <div class="l-main__header--tittle">
+        Top Climbers
+        <IconHome
+          color="var(--color-secondary)"
+          :size="48"
+          stroke-width="1"
+          class="l-main__header--icon c-icon__svg"
+          @click="goProfile()"
+        />
+      </div>
+      <!-- <CIcon iconName="profile" size="medium"></CIcon> -->
     </template>
     <template #main>
       <h2 v-if="error">error</h2>
       <CClimber2
         v-for="climber in climbers"
-        :key="climber.name"
+        :key="climber.id"
         :src="climber"
         :achievements="climber.achievements"
       >
@@ -47,6 +57,7 @@ import CClimber2 from '../components/c-climber2.vue'
 import CButton from '../components/c-button.vue'
 import CInput from '../components/c-input.vue'
 import CIcon from '../components/c-icon.vue'
+import { IconHome } from '@tabler/icons-vue'
 import { userStore } from '../stores/user'
 import { climbersStore } from '../stores/climbers'
 
@@ -57,7 +68,8 @@ export default {
     CButton,
     CClimber2,
     CInput,
-    CIcon
+    CIcon,
+    IconHome
   },
   data() {
     return {
@@ -73,7 +85,10 @@ export default {
     goNext() {
       this.$router.push({ name: 'formClimber' })
     },
+    goProfile(){
+      this.$router.push({ name: 'profile' })
 
+    },
     editClimber(id) {
       this.$router.push({ name: 'modifyClimber', params: { id } })
     },
@@ -123,6 +138,10 @@ export default {
   font-weight: 700;
   margin-bottom: 50px;
   text-align: center;
+  display: inline-block;
+}
+.l-main__header--icon {
+
 }
 .l-main__button {
   display: flex;

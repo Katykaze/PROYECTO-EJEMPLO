@@ -87,6 +87,86 @@ const climbers = [
     link: ''
   }
 ]
+const routes = [
+  {
+    id:'1',
+    name: 'Ghandi',
+    crag: 'Valdegovia',
+    grade: '8a'
+  },
+  {
+    id:'2',
+    name: 'El juego de Ender',
+    crag: 'Peña Pintada',
+    grade: '8a'
+  },
+  {
+    id:'3',
+    name: 'Reload',
+    crag: 'Fin del Mundo',
+    grade: '8a'
+  },
+  {
+    id:'4',
+    name: 'Crianza Matanza',
+    crag: 'Cuenca',
+    grade: '8a'
+  },
+  {
+    id:'5',
+    name: 'Han Solo',
+    crag: 'Cuenca',
+    grade: '8a'
+  },
+  {
+    id:'6',
+    name: 'Mama Africa',
+    crag: 'Cuenca',
+    grade: '8a'
+  },
+  {
+    id:'7',
+    name: 'Nieve de Mayo',
+    crag: 'Cuenca',
+    grade: '8a'
+  },
+  {
+    id:'8',
+    name: 'Las travesuras de Alejandra',
+    crag: 'Cuenca',
+    grade: '8a'
+  },
+  {
+    id:'9',
+    name: 'Sindrome de Stendhal',
+    crag: 'Rumenes',
+    grade: '7c+'
+  },
+  {
+    id:'10',
+    name: 'El club del Marisco',
+    crag: 'Valdegovia',
+    grade: '7c+'
+  },
+  {
+    id:'11',
+    name: 'La Sombra de Ender',
+    crag: 'Peña Pintada',
+    grade: '7c+'
+  },
+  {
+    id:'12',
+    name: 'Granma',
+    crag: 'Estragüeña',
+    grade: '7c'
+  },
+  {
+    id:'13',
+    name: 'Involucion',
+    crag: 'Fin del Mundo',
+    grade: '7c'
+  }
+]
 
 app.listen(port, () => {
   console.log(`Example app listening on por ${port}`)
@@ -104,6 +184,7 @@ app.use((req, res, next) => {
   }
   next()
 })
+
 
 // Middleware to log in console the request and body response.
 app.use(function (req, res, next) {
@@ -151,4 +232,10 @@ app.put('/climbers/mod', (req, res) => {
     climbers[index] = { ...updatedClimber }
   }
   res.send(climbers)
+})
+
+//backend for routes on climbing
+
+app.get('/routes/getAll',(req,res)=>{
+  res.send(routes)
 })
