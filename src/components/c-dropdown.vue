@@ -1,3 +1,4 @@
+<!-- https://github.com/romainsimon/vue-simple-search-dropdown/blob/master/docs/index.html -->
 <template>
   <div class="dropdown">
     <!-- Dropdown Input -->
