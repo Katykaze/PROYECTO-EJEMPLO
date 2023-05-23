@@ -1,109 +1,60 @@
 <!-- https://github.com/romainsimon/vue-simple-search-dropdown/blob/master/docs/index.html -->
 <template>
-  <div class="dropdown">
-    <!-- Dropdown Input -->
-    <input class="dropdown-input"
+  <div class="v-profile__dropdown">
+    <select
       :name="name"
-      @focus="showOptions()"
-      @blur="exit()"
-      v-model="selectedOption"
+      @change="selectedOption($event.target.value)"
       :disabled="disabled"
-      :placeholder="placeholder" />
-
-    <!-- Dropdown Menu -->
-    <div class="dropdown-content" v-show="optionsShown">
-      <div class="dropdown-item"
-        @click="selectOption(option)"
-        v-for="(option, index) in options"
-        :key="index">
-        {{ option }}
-      </div>
-    </div>
+      class="v-profile__select text-m-book"
+    >
+      <option>Elige una opcion</option>
+      <option v-for="(option, index) in options" :value="option" :key="index">{{ option }}</option>
+    </select>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'Dropdown',
+  name: 'CDropdown',
   props: {
     name: {
-      type: String,
-      default: 'dropdown'
+      type: String
     },
     options: {
       type: Array,
       required: true
-    },
-    placeholder: {
-      type: String,
-      default: 'Please select an option'
     },
     disabled: {
       type: Boolean,
       default: false
     }
   },
-  data() {
-    return {
-      selectedOption: '',
-      optionsShown: false
-    }
-  },
   methods: {
-    selectOption(option) {
-      this.selectedOption = option.name;
-      this.optionsShown = false;
-      this.$emit('selected', option);
-    },
-    showOptions() {
-      if (!this.disabled) {
-        this.optionsShown = true;
-      }
-    },
-    exit() {
-      this.optionsShown = false;
+    selectedOption(option) {
+      this.$emit('selected', option)
+      console.log(option)
     }
   }
-};
+}
 </script>
-
-<style scoped>
-.dropdown {
-  position: relative;
-  display: block;
+<style lang="scss">
+.v-profile__dropdown {
+  display: inline-block;
+  width: 100%;
 }
-
-.dropdown-input {
-  background: #fff;
+.v-profile__select {
+  background-color: var(--color-background-input);
+  color: var(--color-text-primary);
   cursor: pointer;
-  border: 1px solid #e7ecf5;
-  border-radius: 3px;
-  color: #333;
-  display: block;
-  font-size: .8em;
-  padding: 6px;
-  min-width: 250px;
-  max-width: 250px;
-}
-
-.dropdown-content {
-  position: absolute;
-  background-color: #fff;
-  min-width: 248px;
-  max-width: 248px;
-  border: 1px solid #e7ecf5;
-  z-index: 1;
-}
-
-.dropdown-item {
-  color: black;
-  font-size: .7em;
-  line-height: 1em;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.dropdown-item:hover {
-  background-color: #e7ecf5;
+  border: none;
+  padding: 10px;
+  &:hover {
+    color: var(--color-text-secondary);
+    background-color: var(--color-secondary);
+  }
+  //esto no me funciona, quiero cambiar la franja del selected en hover
+  &::selection {
+    color: var(--color-text-secondary);
+    background-color: var(--color-secondary);
+  }
 }
 </style>

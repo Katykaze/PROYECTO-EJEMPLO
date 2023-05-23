@@ -239,3 +239,9 @@ app.put('/climbers/mod', (req, res) => {
 app.get('/routes/getAll',(req,res)=>{
   res.send(routes)
 })
+
+app.get('/routes/getByGrade',(req,res)=>{
+  const grade= req.body
+  console.log(grade + ' mock')
+  res.send(routes.filter((route)=>route.grade===grade))
+})

@@ -28,7 +28,7 @@ export const routesStore = defineStore('routes', {
         .then((res) => {
           this.routes = res
           let grades = [...new Set(this.routes.map((route) => route.grade))]
-          console.log(grades + ' grados')
+          console.log(this.grades + ' grados')
           return grades
         })
         .catch((error) => {
@@ -38,6 +38,20 @@ export const routesStore = defineStore('routes', {
 
       //return [... new Set(routes.map(route =>route.grade))]
     },
-    getCrags() {}
+    getRoutesByGrade() {
+      const method = 'GET'
+      const url = '/routes/getByGrade'
+      return fetchStore()
+        .doRequest({ url, method })
+        .then((res) => {
+          this.routes = res
+          console.log('res '+res)
+          return res
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
+    }
   }
 })
