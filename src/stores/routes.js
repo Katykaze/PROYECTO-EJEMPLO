@@ -20,7 +20,7 @@ export const routesStore = defineStore('routes', {
           return false
         })
     },
-    getGrades() {
+    getinfoDropdown() {
       const method = 'GET'
       const url = '/routes/getAll'
       return fetchStore()
@@ -28,8 +28,9 @@ export const routesStore = defineStore('routes', {
         .then((res) => {
           this.routes = res
           let grades = [...new Set(this.routes.map((route) => route.grade))]
-          console.log(this.grades + ' grados')
-          return grades
+          let crags = [...new Set(this.routes.map((route) => route.crag))]
+          //console.log(this.grades + ' grados')
+          return [grades,crags]
         })
         .catch((error) => {
           console.log(error)
@@ -38,15 +39,15 @@ export const routesStore = defineStore('routes', {
 
       //return [... new Set(routes.map(route =>route.grade))]
     },
-    getRoutesByGrade() {
+    getRoutesByGrade(grade) {
       const method = 'GET'
-      const url = '/routes/getByGrade'
+      const url = '/routes/getAll'
       return fetchStore()
         .doRequest({ url, method })
         .then((res) => {
           this.routes = res
-          console.log('res '+res)
-          return res
+          let routesByGrade = this.routes.filter((route)=>route.grade===grade)
+          return routesByGrade
         })
         .catch((error) => {
           console.log(error)

@@ -1,11 +1,11 @@
 <!-- https://github.com/romainsimon/vue-simple-search-dropdown/blob/master/docs/index.html -->
 <template>
-  <div class="v-profile__dropdown">
+  <div class="c-dropdown__wrapper">
     <select
       :name="name"
       @change="selectedOption($event.target.value)"
       :disabled="disabled"
-      class="v-profile__select text-m-book"
+      class="c-dropdown__select text-m-book"
     >
       <option>Elige una opcion</option>
       <option v-for="(option, index) in options" :value="option" :key="index">{{ option }}</option>
@@ -31,17 +31,16 @@ export default {
   methods: {
     selectedOption(option) {
       this.$emit('selected', option)
-      console.log(option)
+      //console.log(option)
     }
   }
 }
 </script>
 <style lang="scss">
-.v-profile__dropdown {
-  display: inline-block;
+.c-dropdown__wrapper {
   width: 100%;
 }
-.v-profile__select {
+.c-dropdown__select {
   background-color: var(--color-background-input);
   color: var(--color-text-primary);
   cursor: pointer;

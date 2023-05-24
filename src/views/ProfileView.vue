@@ -6,7 +6,18 @@
     <template #main>
       <article>
         <section class="v-profile__infoRoutes">
-          <CDropdown :options="grades" @selectedOption="validateSelection"></CDropdown>
+          <div class="v-profile__wrapper--dropdown">
+            <CDropdown
+              :options="grades"
+              @selected="validateSelection"
+              class="v-profile__dropdown"
+            ></CDropdown>
+            <CDropdown
+              :options="crags"
+              @selected="validateSelection"
+              class="v-profile__dropdown"
+            ></CDropdown>
+          </div>
           <h2 v-if="error">Error en asincronia katy!</h2>
           <!--  <CRoute v-for="route in routes" :key="route.name" :src="route"></CRoute> -->
           <div class="v-profile__wrapper--table">
@@ -63,6 +74,7 @@ export default {
     return {
       routes: [],
       grades: [],
+      crags: [],
       name: '',
       crag: '',
       grade: '',
@@ -83,10 +95,12 @@ export default {
         this.error = true
       }
     },
-    async getGradesforDropDown() {
+    async generateDropDown() {
       try {
         const useRouteStore = routesStore()
-        this.grades = await useRouteStore.getGrades()
+        let res = await useRouteStore.getinfoDropdown()
+        this.grades = res[0]
+        this.crags = res[1]
       } catch (e) {
         console.log(e)
       }
@@ -95,9 +109,7 @@ export default {
       try {
         this.selectedOption = option
         const useRouteStore = routesStore()
-        this.routes = await useRouteStore.getRoutesByGrade()
-        console.log(this.routes + ' rutas ordenadas')
-        console.log(this.selectedOption)
+        this.routes = await useRouteStore.getRoutesByGrade(option)
       } catch (e) {
         console.log(e)
       }
@@ -108,10 +120,7 @@ export default {
   },
   created() {
     this.getAllRoutes()
-    this.getGradesforDropDown()
-  },
-  updated(){
-    this.validateSelection()
+    this.generateDropDown()
   }
 }
 </script>
@@ -124,11 +133,24 @@ export default {
   text-align: center;
   display: inline-block;
 }
+/*dropdowns style */
+.v-profile__wrapper--dropdown {
+  //width: 100%;
+  padding: 30px;
+  display: flex;
+  //border: 2px solid white;
+  background: var(--color-background-box-gradient);
+  border-radius: 10px;
+}
+.v-profile__dropdown {
+  //border: 2px solid yellow;
+  display: flex;
+  justify-content: center;
+}
 /*table styles */
 .v-profile__wrapper--table {
   margin: 10px 70px 70px;
-  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
-  //background: var(--color-background-box-gradient);
+  //box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
 }
 .v-profile__table {
   border-radius: 5px;
@@ -137,7 +159,6 @@ export default {
   width: 100%;
   max-width: 100%;
   white-space: nowrap;
-
   & td,
   & th {
     text-align: center;
@@ -156,5 +177,72 @@ export default {
     color: var(--color-white);
     background: var(--color-secondary);
   }
+}
+/*@media table */
+@media (max-width: 767px) {
+  .v-profile__wrapper--dropdown {
+    flex-direction: column;
+  }
+  .v-profile__dropdown {
+    margin-bottom: 10px;
+  }
+  .v-profile__wrapper--table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+  .v-profile__table {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    //max-width: 100%;
+
+    & thead,
+    & tbody,
+    & thead th {
+      display: block;
+    }
+    & thead th:last-child {
+      border-bottom: none;
+    }
+    & thead {
+      float: left;
+    }
+    & tbody {
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+    }
+    & td,
+    & th {
+      padding: 20px 0.625em 0.625em 0.625em;
+      height: 60px;
+      vertical-align: middle;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 120px;
+      font-size: 15px;
+      text-overflow: ellipsis;
+    }
+    & thead th {
+      text-align: left;
+    }
+    & tbody tr {
+      display: table-cell;
+    }
+    & tbody td {
+      display: block;
+      text-align: center;
+    }
+  }
+  // .v-profile__wrapper--table:before {
+  //   content: 'Scroll horizontally >';
+  //   display: block;
+  //   text-align: right;
+  //   //font-size: 11px;
+  //   padding: 0 0 10px;
+  // }
 }
 </style>
