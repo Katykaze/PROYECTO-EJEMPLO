@@ -4,16 +4,11 @@
       <h2 class="v-profile__tittle">Perfil Personal</h2>
     </template>
     <template #main>
-      <article>
+      <article class="v-profile__wrapper">
         <section class="v-profile__infoRoutes">
           <div class="v-profile__wrapper--dropdown">
             <CDropdown
               :options="grades"
-              @selected="validateSelection"
-              class="v-profile__dropdown"
-            ></CDropdown>
-            <CDropdown
-              :options="crags"
               @selected="validateSelection"
               class="v-profile__dropdown"
             ></CDropdown>
@@ -39,14 +34,29 @@
             </table>
           </div>
         </section>
+        <CMessage v-if="showMessage" class="v-profile__message text-l-medium">{{
+          message
+        }}</CMessage>
         <section class="v-profile__formRoutes">
-          <CInput placeholder="Nombre" class="text-m-book"></CInput>
-          <CInput placeholder="Lugar" class="text-m-book"></CInput>
-          <CInput placeholder="Grado" class="text-m-book"></CInput>
+          <CInput
+            v-model:src="name"
+            placeholder="Nombre"
+            class="v-profile__cinput text-m-book"
+          ></CInput>
+          <CInput
+            v-model:src="crag"
+            placeholder="Lugar"
+            class="v-profile__cinput text-m-book"
+          ></CInput>
+          <CInput
+            v-model:src="grade"
+            placeholder="Grado"
+            class="v-profile__cinput text-m-book"
+          ></CInput>
         </section>
         <section class="v-profile__buttons">
-          <CButton @click="doSubmit()">Enviar</CButton>
-          <CButton @click="goBack()">Atrás</CButton>
+          <CButton @click="doSubmit()" class="v-profile__button--add">Enviar</CButton>
+          <CButton @click="goBack()" class="v-profile__button--out">Atrás</CButton>
         </section>
       </article>
     </template>
@@ -59,7 +69,7 @@ import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
 import CDropdown from '../components/c-dropdown.vue'
 import CRoute from '../components/c-route.vue'
-//import { userStore } from '../stores/user'
+import CMessage from '../components/c-message.vue'
 import { routesStore } from '../stores/routes'
 export default {
   name: 'Profile',
@@ -68,19 +78,25 @@ export default {
     CInput,
     CButton,
     CDropdown,
-    CRoute
+    CRoute,
+    CMessage
   },
   data() {
     return {
       routes: [],
       grades: [],
-      crags: [],
       name: '',
       crag: '',
       grade: '',
       isPending: true,
       error: false,
-      selectedOption: ''
+      selectedOption: '',
+      message: ''
+    }
+  },
+  computed: {
+    showMessage() {
+      return this.message !== ''
     }
   },
   methods: {
@@ -98,9 +114,7 @@ export default {
     async generateDropDown() {
       try {
         const useRouteStore = routesStore()
-        let res = await useRouteStore.getinfoDropdown()
-        this.grades = res[0]
-        this.crags = res[1]
+        this.grades = await useRouteStore.getinfoDropdown()
       } catch (e) {
         console.log(e)
       }
@@ -116,6 +130,24 @@ export default {
     },
     goBack() {
       this.$router.go(-1)
+    },
+    async doSubmit() {
+      if (this.grade === '') {
+        return (this.message = 'Por favor rellene al menos el grado de la ruta')
+      }
+      try {
+        const route = {
+          name: this.name,
+          crag: this.crag,
+          grade: this.grade
+        }
+        const useRouteStore = routesStore()
+        this.routes = await useRouteStore.addRoute(route)
+        //Object.assign(this.$data, this.$options.data.apply(this))
+        this.message = 'Ruta Añadido'
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   created() {
@@ -133,11 +165,16 @@ export default {
   text-align: center;
   display: inline-block;
 }
+.v-profile__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 /*dropdowns style */
 .v-profile__wrapper--dropdown {
   //width: 100%;
   padding: 30px;
-  display: flex;
+  //display: flex;
   //border: 2px solid white;
   background: var(--color-background-box-gradient);
   border-radius: 10px;
@@ -147,10 +184,20 @@ export default {
   display: flex;
   justify-content: center;
 }
+/*button styles */
+.v-profile__buttons {
+  display: flex;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  width: 100%;
+  justify-content: center;
+  gap: 7%;
+  padding: 20px;
+}
+
 /*table styles */
 .v-profile__wrapper--table {
   margin: 10px 70px 70px;
-  //box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
 }
 .v-profile__table {
   border-radius: 5px;
@@ -177,6 +224,24 @@ export default {
     color: var(--color-white);
     background: var(--color-secondary);
   }
+}
+.v-profile__formRoutes {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+}
+.v-profile__cinput {
+  background: var(--color-light-secondary);
+  color: var(--color-background-input);
+  padding: 10px;
+}
+.v-profile__cinput::placeholder{
+  color: var(--color-background-input);
+}
+.v-profile__button {
+  display: flex;
+  margin-bottom: 50px;
+  width: 100%;
 }
 /*@media table */
 @media (max-width: 767px) {
@@ -237,12 +302,10 @@ export default {
       text-align: center;
     }
   }
-  // .v-profile__wrapper--table:before {
-  //   content: 'Scroll horizontally >';
-  //   display: block;
-  //   text-align: right;
-  //   //font-size: 11px;
-  //   padding: 0 0 10px;
-  // }
+  .v-profile__formRoutes {
+    flex-direction: column;
+    justify-items: center;
+    border: 2px solid white;
+  }
 }
 </style>

@@ -239,4 +239,10 @@ app.put('/climbers/mod', (req, res) => {
 app.get('/routes/getAll',(req,res)=>{
   res.send(routes)
 })
-
+app.post('/routes/new', (req, res) => {
+  const route = req.body
+  console.log('route: ', route)
+  let nextRouteId = (parseInt(routes.at(-1).id) + 1).toString()
+  routes.push({ id: nextRouteId, ...route })
+  res.send(routes)
+})
