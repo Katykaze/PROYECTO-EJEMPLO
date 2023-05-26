@@ -27,6 +27,7 @@ export const routesStore = defineStore('routes', {
         .doRequest({ url, method })
         .then((res) => {
           this.routes = res
+          //conjunto set --> no elementos duplicados a partir de ese mapeo route.grade sobre routes
           let grades = [...new Set(this.routes.map((route) => route.grade))]
           //console.log(this.grades + ' grados')
           return grades

@@ -14,7 +14,6 @@
             ></CDropdown>
           </div>
           <h2 v-if="error">Error en asincronia katy!</h2>
-          <!--  <CRoute v-for="route in routes" :key="route.name" :src="route"></CRoute> -->
           <div class="v-profile__wrapper--table">
             <table class="v-profile__table text-l-medium">
               <thead>
@@ -68,9 +67,11 @@ import LMain from '../layouts/l-main.vue'
 import CInput from '../components/c-input.vue'
 import CButton from '../components/c-button.vue'
 import CDropdown from '../components/c-dropdown.vue'
-import CRoute from '../components/c-route.vue'
 import CMessage from '../components/c-message.vue'
 import { routesStore } from '../stores/routes'
+
+const useRouteStore = routesStore()
+
 export default {
   name: 'Profile',
   components: {
@@ -78,7 +79,6 @@ export default {
     CInput,
     CButton,
     CDropdown,
-    CRoute,
     CMessage
   },
   data() {
@@ -102,7 +102,6 @@ export default {
   methods: {
     async getAllRoutes() {
       try {
-        const useRouteStore = routesStore()
         this.routes = await useRouteStore.fetchRoutes()
         console.log(this.routes)
         this.isPending = false
@@ -113,7 +112,6 @@ export default {
     },
     async generateDropDown() {
       try {
-        const useRouteStore = routesStore()
         this.grades = await useRouteStore.getinfoDropdown()
       } catch (e) {
         console.log(e)
@@ -122,7 +120,7 @@ export default {
     async validateSelection(option) {
       try {
         this.selectedOption = option
-        const useRouteStore = routesStore()
+
         this.routes = await useRouteStore.getRoutesByGrade(option)
       } catch (e) {
         console.log(e)
@@ -141,9 +139,11 @@ export default {
           crag: this.crag,
           grade: this.grade
         }
-        const useRouteStore = routesStore()
+
         this.routes = await useRouteStore.addRoute(route)
-        //Object.assign(this.$data, this.$options.data.apply(this))
+        this.name = ''
+        this.crag = ''
+        this.grade = ''
         this.message = 'Ruta Añadido'
       } catch (e) {
         console.log(e)
@@ -167,8 +167,13 @@ export default {
 }
 .v-profile__wrapper {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.v-profile__infoRoutes {
 }
 /*dropdowns style */
 .v-profile__wrapper--dropdown {
@@ -195,9 +200,30 @@ export default {
   padding: 20px;
 }
 
+.v-profile__formRoutes {
+  display: grid;
+  grid-auto-rows: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  place-items: center;
+  gap: 30px;
+}
+.v-profile__cinput {
+  background: var(--color-light-secondary);
+  color: var(--color-background-input);
+  padding: 10px;
+}
+.v-profile__cinput::placeholder {
+  color: var(--color-background-input);
+}
+.v-profile__button {
+  display: flex;
+  margin-bottom: 50px;
+  width: 100%;
+}
 /*table styles */
 .v-profile__wrapper--table {
   margin: 10px 70px 70px;
+  border: 2px solid white;
 }
 .v-profile__table {
   border-radius: 5px;
@@ -224,24 +250,6 @@ export default {
     color: var(--color-white);
     background: var(--color-secondary);
   }
-}
-.v-profile__formRoutes {
-  display: flex;
-  width: 100%;
-  gap: 30px;
-}
-.v-profile__cinput {
-  background: var(--color-light-secondary);
-  color: var(--color-background-input);
-  padding: 10px;
-}
-.v-profile__cinput::placeholder{
-  color: var(--color-background-input);
-}
-.v-profile__button {
-  display: flex;
-  margin-bottom: 50px;
-  width: 100%;
 }
 /*@media table */
 @media (max-width: 767px) {
