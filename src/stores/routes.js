@@ -29,8 +29,9 @@ export const routesStore = defineStore('routes', {
           this.routes = res
           //conjunto set --> no elementos duplicados a partir de ese mapeo route.grade sobre routes
           let grades = [...new Set(this.routes.map((route) => route.grade))]
+          let crags = [...new Set(this.routes.map((route) => route.crag))]
           //console.log(this.grades + ' grados')
-          return grades
+          return [grades,crags]
         })
         .catch((error) => {
           console.log(error)
@@ -39,15 +40,17 @@ export const routesStore = defineStore('routes', {
 
       //return [... new Set(routes.map(route =>route.grade))]
     },
-    getRoutesByGrade(grade) {
+    getRoutesByGrade(grade,crag) {
       const method = 'GET'
       const url = '/routes/getAll'
       return fetchStore()
         .doRequest({ url, method })
         .then((res) => {
           this.routes = res
-          let routesByGrade = this.routes.filter((route) => route.grade === grade)
-          return routesByGrade
+          let routesByGradeAndCrag = this.routes.filter((route) => route.grade === grade && route.crag === crag)
+          //let routesByCrag = this.routes.filter((route) => route.grade === grade)
+          console.log(routesByGradeAndCrag)
+          return routesByGradeAndCrag
         })
         .catch((error) => {
           console.log(error)

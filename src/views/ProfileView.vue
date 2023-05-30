@@ -7,9 +7,15 @@
       <article class="v-profile__wrapper">
         <section class="v-profile__infoRoutes">
           <div class="v-profile__wrapper--dropdown">
+            <!-- $event como valor escogido y se pasa como argumento junto con su identificacion-->
             <CDropdown
               :options="grades"
-              @selected="validateSelection"
+              @selected="validateSelection('dropdown1', $event)"
+              class="v-profile__dropdown"
+            ></CDropdown>
+            <CDropdown
+              :options="crags"
+              @selected="validateSelection('dropdown2', $event)"
               class="v-profile__dropdown"
             ></CDropdown>
           </div>
@@ -85,12 +91,14 @@ export default {
     return {
       routes: [],
       grades: [],
+      crags: [],
       name: '',
       crag: '',
       grade: '',
       isPending: true,
       error: false,
-      selectedOption: '',
+      selectedOption1: '',
+      selectedOption2: '',
       message: ''
     }
   },
@@ -112,16 +120,30 @@ export default {
     },
     async generateDropDown() {
       try {
-        this.grades = await useRouteStore.getinfoDropdown()
+        let res = await useRouteStore.getinfoDropdown()
+        console.log(res)
+        this.grades = res[0]
+        this.crags = res[1]
       } catch (e) {
         console.log(e)
       }
     },
-    async validateSelection(option) {
+    async validateSelection(identifier, option) {
       try {
-        this.selectedOption = option
+        if (identifier == 'dropdown1') {
+          this.selectedOption1 = option
+        }
+        if (identifier == 'dropdown2') {
+          this.selectedOption2 = option
+        }
 
-        this.routes = await useRouteStore.getRoutesByGrade(option)
+        console.log(this.selectedOption1, this.selectedOption2)
+
+        this.routes = await useRouteStore.getRoutesByGrade(
+          this.selectedOption1,
+          this.selectedOption2
+        )
+        console.log(this.routes)
       } catch (e) {
         console.log(e)
       }
