@@ -6,6 +6,8 @@
     <template #main>
       <article class="v-profile__wrapper">
         <section class="v-profile__infoRoutes">
+          <div class="v-profile__wrapper--chart"><canvas id="chart"></canvas></div>
+
           <div class="v-profile__wrapper--dropdown">
             <!-- $event como valor escogido y se pasa como argumento junto con su identificacion-->
             <CDropdown
@@ -75,6 +77,7 @@ import CButton from '../components/c-button.vue'
 import CDropdown from '../components/c-dropdown.vue'
 import CMessage from '../components/c-message.vue'
 import { routesStore } from '../stores/routes'
+import Chart from 'chart.js/auto'
 
 const useRouteStore = routesStore()
 
@@ -92,6 +95,7 @@ export default {
       routes: [],
       grades: [],
       crags: [],
+      totalRoutesByGrade: [],
       name: '',
       crag: '',
       grade: '',
@@ -111,7 +115,30 @@ export default {
     async getAllRoutes() {
       try {
         this.routes = await useRouteStore.fetchRoutes()
-        console.log(this.routes)
+        this.totalRoutesByGrade = await useRouteStore.countRoutesByGrade()
+        const chart = document.querySelector('#chart')
+        const gradesWithValues = Object.keys(this.totalRoutesByGrade)
+          .sort((a, b) => b.localeCompare(a))
+          .map((key) => ({ key, value: this.totalRoutesByGrade[key] }))
+        const grades = gradesWithValues.map((item) => item.key)
+        const routeCounts = gradesWithValues.map((item) => item.value)
+        new Chart(chart, {
+          type: 'bar',
+          options: {
+            animation: true
+          },
+          data: {
+            labels: grades,
+            datasets: [
+              {
+                label: 'Routes by grade',
+                data: routeCounts,
+                backgroundColor: ['rgb(255, 99, 132)']
+              }
+            ]
+          }
+        })
+        console.log(this.totalRoutesByGrade)
         this.isPending = false
       } catch (e) {
         console.log(e)
@@ -120,7 +147,7 @@ export default {
     },
     async generateDropDown() {
       try {
-        let res = await useRouteStore.getinfoDropdown()
+        const res = await useRouteStore.getinfoDropdown()
         console.log(res)
         this.grades = res[0]
         this.crags = res[1]
@@ -175,7 +202,8 @@ export default {
   created() {
     this.getAllRoutes()
     this.generateDropDown()
-  }
+  },
+  mounted() {}
 }
 </script>
 <style lang="scss" scoped>
@@ -189,19 +217,35 @@ export default {
 }
 .v-profile__wrapper {
   width: 100%;
-  height: 100%;
+  //height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .v-profile__infoRoutes {
+  width: 80%;
+}
+.v-profile__wrapper--chart {
+  display: flex;
+  //width: 100%;
+  height: 40vh;
+  width: 80vw;
+  //height: 350px;
+  margin-bottom: 20px;
+  justify-content: center;
+  background-color: var(--color-background-light);
+  border-radius: 10px;
+  @media (max-width: 900px) {
+    width: 80vw;
+    height: 20vh;
+  }
 }
 /*dropdowns style */
 .v-profile__wrapper--dropdown {
   //width: 100%;
   padding: 30px;
-  //display: flex;
+  display: flex;
   //border: 2px solid white;
   background: var(--color-background-box-gradient);
   border-radius: 10px;
@@ -223,11 +267,15 @@ export default {
 }
 
 .v-profile__formRoutes {
+  width: 80%;
+  padding: 30px;
+  border-radius:10px;
   display: grid;
   grid-auto-rows: 50px;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   place-items: center;
   gap: 30px;
+  background: var(--color-background-light);
 }
 .v-profile__cinput {
   background: var(--color-light-secondary);
@@ -245,7 +293,6 @@ export default {
 /*table styles */
 .v-profile__wrapper--table {
   margin: 10px 70px 70px;
-  border: 2px solid white;
 }
 .v-profile__table {
   border-radius: 5px;

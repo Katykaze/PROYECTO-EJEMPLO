@@ -31,7 +31,7 @@ export const routesStore = defineStore('routes', {
           let grades = [...new Set(this.routes.map((route) => route.grade))]
           let crags = [...new Set(this.routes.map((route) => route.crag))]
           //console.log(this.grades + ' grados')
-          return [grades,crags]
+          return [grades, crags]
         })
         .catch((error) => {
           console.log(error)
@@ -40,14 +40,16 @@ export const routesStore = defineStore('routes', {
 
       //return [... new Set(routes.map(route =>route.grade))]
     },
-    getRoutesByGrade(grade,crag) {
+    getRoutesByGrade(grade, crag) {
       const method = 'GET'
       const url = '/routes/getAll'
       return fetchStore()
         .doRequest({ url, method })
         .then((res) => {
           this.routes = res
-          let routesByGradeAndCrag = this.routes.filter((route) => route.grade === grade && route.crag === crag)
+          let routesByGradeAndCrag = this.routes.filter(
+            (route) => route.grade === grade && route.crag === crag
+          )
           //let routesByCrag = this.routes.filter((route) => route.grade === grade)
           console.log(routesByGradeAndCrag)
           return routesByGradeAndCrag
@@ -65,6 +67,30 @@ export const routesStore = defineStore('routes', {
         .then((res) => {
           this.routes = res
           return res
+        })
+        .catch((error) => {
+          console.log(error)
+          return false
+        })
+    },
+    countRoutesByGrade() {
+      const method = 'GET'
+      const url = '/routes/getAll'
+      return fetchStore()
+        .doRequest({ url, method })
+        .then((res) => {
+          this.routes = res
+          const totalRoutesByGrade = []
+          this.routes.forEach((route) => {
+            if (route.grade in totalRoutesByGrade) {
+              totalRoutesByGrade[route.grade]++
+            } else {
+              totalRoutesByGrade[route.grade] = 1
+            }
+          })
+
+          console.log(totalRoutesByGrade)
+          return totalRoutesByGrade
         })
         .catch((error) => {
           console.log(error)

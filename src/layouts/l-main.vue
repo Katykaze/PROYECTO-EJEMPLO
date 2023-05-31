@@ -32,7 +32,8 @@ export default {
   overflow: auto;
 }
 .l-main__content {
-  flex-grow: 1;
+  //flex-grow: 1;
+  width: 100%;
 }
 .l-main__header,
 .l-main__footer {
